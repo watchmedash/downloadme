@@ -79,6 +79,13 @@ document.addEventListener("DOMContentLoaded", function() {
       { name: "Domme Vivamax - HD", link: "https://filemoon.sx/d/wcdqhoeaod6z" },
       { name: "La Querida Vivamax - HD", link: "https://filemoon.sx/d/dhctn0i0nrik" },
       { name: "Boso Dos Vivamax - HD", link: "https://filemoon.sx/d/lmkhm4uwkc66" },
+      { name: "Adonis x Vivamax - HD", link: "https://filemoon.sx/d/kginm5689rj2" },
+      { name: "Alapaap Vivamax - HD", link: "https://filemoon.sx/d/1sjuwv104zmo" },
+      { name: "An Affair to Forget Vivamax - HD", link: "https://filemoon.sx/d/ug5e4nqz6re6" },
+      { name: "Ang Babaeng Nawawala sa Sarili Vivamax - HD", link: "https://filemoon.sx/d/0pka093a9brd" },
+      { name: "Bata pa si Sabel Vivamax - HD", link: "https://filemoon.sx/d/gnte4a2qu6tg" },
+      { name: "Biyak  Vivamax - HD", link: "https://filemoon.sx/d/muvelmeey2k6" },
+      { name: "Boy Bastos Vivamax - HD", link: "https://filemoon.sx/d/86hk7762e3q3" },
         // Add more adult content objects as needed...
     ];
 
