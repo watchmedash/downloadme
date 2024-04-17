@@ -1,15 +1,16 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of movie objects with name and link properties
     const movieLinks = [
+      { name: "Ghostbusters Frozen Empire - SD", link: "https://filemoon.sx/d/b8vz8ayhzi3q" },
       { name: "Godzilla x Kong The New Empire - HDts", link: "https://filemoon.sx/d/x7yn1w9i3cat" },
       { name: "Godzilla x Kong The New Empire - HDcam", link: "https://filemoon.sx/d/1w2i5lcm3oxd" },
       { name: "Road House - HD", link: "https://filemoon.sx/d/3h3coks8h3xm" },
       { name: "Immaculate - HD", link: "https://filemoon.sx/d/0k6wduc88vnk" },
       { name: "Argylle - HD", link: "https://filemoon.sx/d/2q6zeb3dbyk3" },
       { name: "Dune Part Two - HD", link: "https://filemoon.sx/d/fhossmfze41p" },
-
       { name: "Kung Fu Panda 4 - HD", link: "https://filemoon.sx/d/u393ski8ltc2" },
-
+      { name: "Jimmy Carr: Natural Born Killer - HD", link: "https://filemoon.sx/d/4b1y73wwsyyq" },
+      { name: "Wrong Places - HD", link: "https://filemoon.sx/d/ikfiqxteu8sy" },
       { name: "Damaged - HD", link: "https://filemoon.sx/d/65aeg106viwy" },
       { name: "Breathe - HD", link: "https://filemoon.sx/d/8hwwgnypkllc" },
       { name: "Sleeping Dogs - HD", link: "https://filemoon.sx/d/5dsyz5lq5306" },
@@ -18,17 +19,13 @@ document.addEventListener("DOMContentLoaded", function() {
       { name: "Musica - HD", link: "https://filemoon.sx/d/3f7w10dmwkm1" },
       { name: "Ricky Stanicky - HD", link: "https://filemoon.sx/d/76rf9hl0mkzq" },
       { name: "Madame Web - HD", link: "https://filemoon.sx/d/59mcq47bktfg" },
-
       { name: "Demon Slayer 2024 - HD", link: "https://filemoon.sx/d/tyy1bzvo14oy" },
       { name: "Imaginary - HD", link: "https://filemoon.sx/d/yvexdiljl7yc" },
       { name: "Damsel - HD", link: "https://filemoon.sx/d/emo42r3n7037" },
       { name: "Argylle 2024 - HD", link: "https://filemoon.sx/d/pspaavbjwn80" },
       { name: "Pamangkin 2024 - HD", link: "https://filemoon.sx/d/0g9b58l5o7ef" },
-
       { name: "Ghostbusters Frozen Empire - Cam", link: "https://filemoon.sx/d/hj442q2k8l0o" },
-
       { name: "The Three Musketeers - Part II - Milady - HD", link: "https://filemoon.sx/d/nofreh6sdspa" },
-
         { name: "Dayo - HD", link: "https://filemoon.sx/d/zwo8s218gdu0" },
         { name: "Knox Goes Away - HD", link: "https://filemoon.sx/d/opliw2xhokka" },
         { name: "Squealer - HD", link: "https://filemoon.sx/d/6gokh0vavrxx" },
@@ -602,7 +599,7 @@ document.addEventListener("DOMContentLoaded", function() {
         { name: "Unlocked  2023  - HD", link: "https://filemoon.sx/d/sxck9qs8hrfx" },
         { name: "Vacation Friends 2 - HD", link: "https://filemoon.sx/d/9gryrglc2qnq" },
         { name: "Venom- Let There Be Carnage - HD", link: "https://filemoon.sx/d/eksk4yqsubqh" },
-        
+
         { name: "Violent Night - HD", link: "https://filemoon.sx/d/kktheqzupwjr" },
         { name: "Weathering With You - HD", link: "https://filemoon.sx/d/4gwd287ffdnh" },
         { name: "Werewolf by Night - HD", link: "https://filemoon.sx/d/p5co8jzpy9dq" },
