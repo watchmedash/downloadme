@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of movie objects with name and link properties
     const movieLinks = [
+      { name: "Godzilla x Kong The New Empire - HDts", link: "https://filemoon.sx/download/x7yn1w9i3cat" },
       { name: "Godzilla x Kong The New Empire - HDcam", link: "https://filemoon.sx/download/1w2i5lcm3oxd" },
       { name: "Road House - HD", link: "https://filemoon.sx/download/3h3coks8h3xm" },
       { name: "Immaculate - HD", link: "https://filemoon.sx/download/0k6wduc88vnk" },
@@ -11,6 +12,10 @@ document.addEventListener("DOMContentLoaded", function() {
       { name: "Kasalo Vivamax 2024 - HD", link: "https://filemoon.sx/download/rx78pipid99f" },
       { name: "Kung Fu Panda 4 - HD", link: "https://filemoon.sx/download/u393ski8ltc2" },
       { name: "Mapanukso 2024 Vivamax - HD", link: "https://filemoon.sx/download/4b2fb4cchjig" },
+      { name: "Damaged - HD", link: "https://filemoon.sx/download/65aeg106viwy" },
+      { name: "Breathe - HD", link: "https://filemoon.sx/download/8hwwgnypkllc" },
+      { name: "Sleeping Dogs - HD", link: "https://filemoon.sx/download/5dsyz5lq5306" },
+      { name: "Baghead - HD", link: "https://filemoon.sx/download/qk32f5kzssj6" },
       { name: "Musica - HD", link: "https://filemoon.sx/download/3f7w10dmwkm1" },
       { name: "Ricky Stanicky - HD", link: "https://filemoon.sx/download/76rf9hl0mkzq" },
       { name: "Madame Web - HD", link: "https://filemoon.sx/download/59mcq47bktfg" },
