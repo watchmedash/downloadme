@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of adult content objects with name and link properties
     const adultLinks = [
+      { name: "Sweet Release 2024 Vivamax - HD", link: "https://filemoon.sx/d/k7widr1fykez" },
       { name: "Stag 2024 Vivamax - HD", link: "https://filemoon.sx/d/dbofj8gmwhop" },
       { name: "Tl 2024 Vivamax - HD", link: "https://filemoon.sx/d/4qidmg2ybce7" },
       { name: "Wanted Girlfriend 2024 Vivamax - HD", link: "https://filemoon.sx/d/8hizu2pigkix" },
@@ -65,9 +66,19 @@ document.addEventListener("DOMContentLoaded", function() {
       { name: "Sugapa Vivamax - HD", link: "https://filemoon.sx/d/oe0wvrnusrel" },
       { name: "Suki Vivamax - HD", link: "https://filemoon.sx/d/0z0ppvk283yy" },
       { name: "Tayuan Vivamax - HD", link: "https://filemoon.sx/d/rsnlyg22istg" },
-      { name: "Tubero Vivamax - HD", link: "https://filemoon.sx/d/nwc93be0au2n/Tubero" },
+      { name: "Tubero Vivamax - HD", link: "https://filemoon.sx/d/nwc93be0au2n" },
       { name: "Tuhog Vivamax 2023 - HD", link: "https://filemoon.sx/d/uppui6n22gg7" },
       { name: "Sugar Baby Vivamax - HD", link: "https://filemoon.sx/d/i8b9mr9vio28" },
+      { name: "Star Dancer Vivamax - HD", link: "https://filemoon.sx/d/qcdc2xuvkvui" },
+      { name: "Deleter Vivamax - HD", link: "https://filemoon.sx/d/9yfrp02yzdzo" },
+      { name: "Upuan Vivamax - HD", link: "https://filemoon.sx/d/1nujb7zwe6lc" },
+      { name: "Sapul Vivamax - HD", link: "https://filemoon.sx/d/pd2pqjixh96i" },
+      { name: "Two Of Us Vivamax - HD", link: "https://filemoon.sx/d/m5aoexk1brs3" },
+      { name: "Balik Taya Vivamax - HD", link: "https://filemoon.sx/d/n3qhom4pwa7e" },
+      { name: "Kabayo Vivamax - HD", link: "https://filemoon.sx/d/fxsbsoiezvpv" },
+      { name: "Domme Vivamax - HD", link: "https://filemoon.sx/d/wcdqhoeaod6z" },
+      { name: "La Querida Vivamax - HD", link: "https://filemoon.sx/d/dhctn0i0nrik" },
+      { name: "Boso Dos Vivamax - HD", link: "https://filemoon.sx/d/lmkhm4uwkc66" },
         // Add more adult content objects as needed...
     ];
 
