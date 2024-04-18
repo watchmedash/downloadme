@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of movie objects with name and link properties
     const movieLinks = [
+      { name: "Ghostbusters Frozen Empire - HD", link: "https://filemoon.sx/d/y61807zlozxq" },
       { name: "Ghostbusters Frozen Empire - SD", link: "https://filemoon.sx/d/b8vz8ayhzi3q" },
       { name: "Godzilla x Kong The New Empire - HDts", link: "https://filemoon.sx/d/x7yn1w9i3cat" },
       { name: "Godzilla x Kong The New Empire - HDcam", link: "https://filemoon.sx/d/1w2i5lcm3oxd" },
