@@ -85,6 +85,13 @@ document.addEventListener("DOMContentLoaded", function() {
       { name: "Ang Babaeng Nawawala sa Sarili Vivamax - HD", link: "https://filemoon.sx/d/0pka093a9brd" },
       { name: "Bata pa si Sabel Vivamax - HD", link: "https://filemoon.sx/d/gnte4a2qu6tg" },
       { name: "Biyak  Vivamax - HD", link: "https://filemoon.sx/d/muvelmeey2k6" },
+      { name: "Hugas  Vivamax - HD", link: "https://filemoon.sx/d/geg0y03kpavi" },
+      { name: "Breathe Again 2022  Vivamax - HD", link: "https://filemoon.sx/d/cgmjr5vafgi2" },
+      { name: "Do You Think I Am Sexy 2022  Vivamax - HD", link: "https://filemoon.sx/d/77xdwgqaxt2f" },
+      { name: "Girl Friday 2022  Vivamax - HD", link: "https://filemoon.sx/d/po8wpkvdd5yd" },
+      { name: "Doblado  Vivamax - HD", link: "https://filemoon.sx/d/3pfjdj14du5l" },
+      { name: "Bugso 2022  Vivamax - HD", link: "https://filemoon.sx/d/bcwm7aq19oxr" },
+      { name: "Expensive Candy 2022  Vivamax - HD", link: "https://filemoon.sx/d/soswfp74q0cc" },
       { name: "Boy Bastos Vivamax - HD", link: "https://filemoon.sx/d/86hk7762e3q3" },
         // Add more adult content objects as needed...
     ];
