@@ -93,6 +93,21 @@ document.addEventListener("DOMContentLoaded", function() {
       { name: "Bugso 2022  Vivamax - HD", link: "https://filemoon.sx/d/bcwm7aq19oxr" },
       { name: "Expensive Candy 2022  Vivamax - HD", link: "https://filemoon.sx/d/soswfp74q0cc" },
       { name: "Boy Bastos Vivamax - HD", link: "https://filemoon.sx/d/86hk7762e3q3" },
+      { name: "Ikaw Lang Ang Mahal  Vivamax - HD", link: "https://filemoon.sx/d/3pfjdj14du5l" },
+      { name: "Island of Desire  Vivamax - HD", link: "https://filemoon.sx/d/6x8pl0d5wt1z" },
+      { name: "Kara Krus  Vivamax - HD", link: "https://filemoon.sx/d/9q8bl1t78who" },
+      { name: "Kitty K7 Vivamax - HD", link: "https://filemoon.sx/d/6nxpmxmgwooj" },
+      { name: "Lampas Langit Vivamax - HD", link: "https://filemoon.sx/d/fzjy7uq1giht" },
+      { name: "Laruan 2022 Vivamax - HD", link: "https://filemoon.sx/d/799a8avottzc" },
+      { name: "Mahjong Nights 2022 Vivamax - HD", link: "https://filemoon.sx/d/mq161ikelyfs" },
+      { name: "Memories of a Love Story 2022 - HD", link: "https://filemoon.sx/d/wagofhmgv5ix" },
+      { name: "Moonlight Butterfly 2022  Vivamax - HD", link: "https://filemoon.sx/d/mf0q3qg701y5" },
+      { name: "Pabuya 2022 Vivamax - HD", link: "https://filemoon.sx/d/duge4mz4kgko" },
+      { name: "Pamasahe 2022 Vivamax - HD", link: "https://filemoon.sx/d/4g1rqy82xvq2" },
+      { name: "Pathirsty 2022  Vivamax - HD", link: "https://filemoon.sx/d/94kbkmxkqxei" },
+      { name: "Pula Ang Kulay Ng Gabi 2022  Vivamax - HD", link: "https://filemoon.sx/d/azstr878y0ge" },
+      { name: "Purificacion 2022 - HD", link: "https://filemoon.sx/d/spspdsiruejf" },
+      { name: "Pusoy 2022  Vivamax - HD", link: "https://filemoon.sx/d/3vik1k8bbiij" },
         // Add more adult content objects as needed...
     ];
 
