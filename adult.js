@@ -108,6 +108,22 @@ document.addEventListener("DOMContentLoaded", function() {
       { name: "Pula Ang Kulay Ng Gabi 2022  Vivamax - HD", link: "https://filemoon.sx/d/azstr878y0ge" },
       { name: "Purificacion 2022 - HD", link: "https://filemoon.sx/d/spspdsiruejf" },
       { name: "Pusoy 2022  Vivamax - HD", link: "https://filemoon.sx/d/3vik1k8bbiij" },
+      { name: "Putahe  Vivamax - HD", link: "https://filemoon.sx/d/eexdz1d7tf6r" },
+      { name: "Shoot Shoot Vivamax - HD", link: "https://filemoon.sx/d/iynp6xfo14zz" },
+      { name: "Selinas Gold Vivamax - HD", link: "https://filemoon.sx/d/lktmoee2khxg" },
+      { name: "Showroom Vivamax - HD", link: "https://filemoon.sx/d/32p2zdsury6q" },
+      { name: "Siklo 2022 Vivamax - HD", link: "https://filemoon.sx/d/cf7alwlozgwy" },
+      { name: "Sisid 2022 Vivamax - HD", link: "https://filemoon.sx/d/ujjokhou8cql" },
+      { name: "Sitio Diablo 2022 Vivamax - HD", link: "https://filemoon.sx/d/qhllthmy231a" },
+      { name: "Tahan 2022 Vivamax - HD", link: "https://filemoon.sx/d/wig2uqx42bar" },
+      { name: "The Escort Wife 2022 Vivamax - HD", link: "https://filemoon.sx/d/y68o7jnyjvz1" },
+      { name: "The Influencer Vivamax - HD", link: "https://filemoon.sx/d/fijxjwoz6krn" },
+      { name: "The Last Five Years 2022 Vivamax - HD", link: "https://filemoon.sx/d/om73ct6roxod" },
+      { name: "The Wife Vivamax - HD", link: "https://filemoon.sx/d/er3htaiqf0rm" },
+      { name: "Us X Her 2022 Vivamax - HD", link: "https://filemoon.sx/d/ytt90mv2s15y" },
+      { name: "X-deal 2 Vivamax - HD", link: "https://filemoon.sx/d/uqbu0my051m9" },
+      { name: "Virgin Forest Vivamax - HD", link: "https://filemoon.sx/d/lhqp7f5iq34y" },
+
         // Add more adult content objects as needed...
     ];
 
