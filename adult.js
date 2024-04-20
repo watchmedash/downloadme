@@ -124,6 +124,10 @@ document.addEventListener("DOMContentLoaded", function() {
       { name: "X-deal 2 Vivamax - HD", link: "https://filemoon.sx/d/uqbu0my051m9" },
       { name: "Virgin Forest Vivamax - HD", link: "https://filemoon.sx/d/lhqp7f5iq34y" },
       { name: "Reroute 2022 Vivamax - HD", link: "https://filemoon.sx/d/z3b7h05b6b6s" },
+      { name: "Seksi- Pantasya at Pelikula - HD", link: "https://filemoon.sx/d/dzqqfi5mmxoi" },
+{ name: "Sex In Philippine Cinema 1 - HD", link: "https://filemoon.sx/d/nq7gbzjp3br7" },
+      { name: "Sex In Philippine Cinema 2 - HD", link: "https://filemoon.sx/d/zkw4hho40jlf" },
+      { name: "Sex In Philippine Cinema 3 - HD", link: "https://filemoon.sx/d/nc8x40kua47x" },
 
         // Add more adult content objects as needed...
     ];

@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of movie objects with name and link properties
     const movieLinks = [
+      { name: "Rebel Moon - Part Two: The Scargiver - HD", link: "https://filemoon.sx/d/eepytha8hc15" },
+      { name: "Late Night with the Devil - HD", link: "https://filemoon.sx/d/msb0y87uui1s" },
+      { name: "Asphalt City - HD", link: "https://filemoon.sx/d/3uyt9kxb84mq" },
       { name: "Ghostbusters Frozen Empire - HD", link: "https://filemoon.sx/d/y61807zlozxq" },
       { name: "Ghostbusters Frozen Empire - SD", link: "https://filemoon.sx/d/b8vz8ayhzi3q" },
       { name: "Godzilla x Kong The New Empire - HDts", link: "https://filemoon.sx/d/x7yn1w9i3cat" },
@@ -495,12 +498,10 @@ document.addEventListener("DOMContentLoaded", function() {
         { name: "Scooby-Doo! And Krypto Too! - HD", link: "https://filemoon.sx/d/1krnobiozw76" },
         { name: "scream 6 - HD", link: "https://filemoon.sx/d/66kjl1rfajil" },
         { name: "Scream - HD", link: "https://filemoon.sx/d/ydby5qnfly98" },
-        { name: "Seksi- Pantasya at Pelikula - HD", link: "https://filemoon.sx/d/dzqqfi5mmxoi" },
+
         { name: "Sentinelle 2023 - HD", link: "https://filemoon.sx/d/m6riuqz0f9n9" },
 
-        { name: "Sex In Philippine Cinema 1 - HD", link: "https://filemoon.sx/d/nq7gbzjp3br7" },
-        { name: "Sex In Philippine Cinema 2 - HD", link: "https://filemoon.sx/d/zkw4hho40jlf" },
-        { name: "Sex In Philippine Cinema 3 - HD", link: "https://filemoon.sx/d/nc8x40kua47x" },
+
         { name: "Shang-Chi and the Legend of the Ten Rings - HD", link: "https://filemoon.sx/d/f3wvcmf2h7fu" },
         { name: "Shazam! Fury of the Gods - HD", link: "https://filemoon.sx/d/bgx72g8r5jxu" },
 
