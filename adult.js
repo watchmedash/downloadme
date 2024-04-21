@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       const adScriptSrc = document.createElement("script");
       adScriptSrc.type = "text/javascript";
-      adScriptSrc.src = "//perilastronaut.com/562360130da748b77364948cbf50e10b/invoke.js";
+      adScriptSrc.src = "//perilastronaut.com/b9a8423ba82179e793ae4a5b1096f541/invoke.js";
       adContainer.appendChild(adScriptSrc);
       }
 
