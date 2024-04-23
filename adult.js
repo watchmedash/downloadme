@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of adult content objects with name and link properties
     const adultLinks = [
+      { name: "Red Flag 2024 Vivamax - HD", link: "https://filemoon.sx/d/vah0fk2fazgd" },
       { name: "Sweet Release 2024 Vivamax - HD", link: "https://filemoon.sx/d/k7widr1fykez" },
       { name: "Stag 2024 Vivamax - HD", link: "https://filemoon.sx/d/dbofj8gmwhop" },
       { name: "Tl 2024 Vivamax - HD", link: "https://filemoon.sx/d/4qidmg2ybce7" },
