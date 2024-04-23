@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of show objects with name and link properties
     const showLinks = [
+        { name: "Shogun Season 1 Episode 9", link: "https://filemoon.sx/d/4odkgma4p7r9" },
         { name: "Fallout Season 1 Episode 1", link: "https://filemoon.sx/d/zhm69kdtf6q7" },
         { name: "Fallout Season 1 Episode 2", link: "https://filemoon.sx/d/twcats6o9sz3" },
         { name: "Fallout Season 1 Episode 3", link: "https://filemoon.sx/d/6buvp405kdrp" },
