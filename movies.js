@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of movie objects with name and link properties
     const movieLinks = [
+      { name: "Justice League- Crisis on Infinite Earths - Part Two 2024 - HD", link: "https://filemoon.sx/d/po90hqw4iswu" },
+      { name: "The First Omen HDCam", link: "https://filemoon.sx/d/zysh7tzwtcjh" },
       { name: "Arthur the King 2024 - HD", link: "https://filemoon.sx/d/614w5sp33gs8" },
       { name: "Monkey Man 2024 - HD", link: "https://filemoon.sx/d/0r9zj7fip5wl" },
       { name: "Rebel Moon - Part Two: The Scargiver - HD", link: "https://filemoon.sx/d/eepytha8hc15" },
