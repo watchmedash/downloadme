@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
       { name: "The First Omen HDCam", link: "https://filemoon.sx/d/zysh7tzwtcjh" },
       { name: "Arthur the King 2024 - HD", link: "https://filemoon.sx/d/614w5sp33gs8" },
       { name: "Monkey Man 2024 - HD", link: "https://filemoon.sx/d/0r9zj7fip5wl" },
+      { name: "MR-9: Do or Die - HD", link: "https://filemoon.sx/d/4u19kb23cpqx" },
       { name: "Rebel Moon - Part Two: The Scargiver - HD", link: "https://filemoon.sx/d/eepytha8hc15" },
       { name: "Late Night with the Devil - HD", link: "https://filemoon.sx/d/msb0y87uui1s" },
       { name: "Asphalt City - HD", link: "https://filemoon.sx/d/3uyt9kxb84mq" },
