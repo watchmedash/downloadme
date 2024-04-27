@@ -1,6 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of movie objects with name and link properties
     const movieLinks = [
+      { name: "City Hunter - HD", link: "https://filemoon.sx/d/lsgouoeysos9" },
+      { name: "Exhuma - HD", link: "https://filemoon.sx/d/zogrj8jfoth3" },
+      { name: "Love Lies Bleeding - HD", link: "https://filemoon.sx/d/b4sognvvxpwr" },
+      { name: "Possessions - HD", link: "https://filemoon.sx/d/7y931wdheqq3" },
+      { name: "Downtown Owl - HD", link: "https://filemoon.sx/d/ync74ggv3kvn" },
       { name: "Justice League- Crisis on Infinite Earths - Part Two 2024 - HD", link: "https://filemoon.sx/d/po90hqw4iswu" },
       { name: "The First Omen HDCam", link: "https://filemoon.sx/d/zysh7tzwtcjh" },
       { name: "Arthur the King 2024 - HD", link: "https://filemoon.sx/d/614w5sp33gs8" },
