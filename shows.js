@@ -1,6 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of show objects with name and link properties
     const showLinks = [
+      { name: "Knuckles Season 1 Episode 1", link: "https://filemoon.sx/d/m84ct5vamiie" },
+      { name: "Knuckles Season 1 Episode 2", link: "https://filemoon.sx/d/varxnz0hlkfx" },
+      { name: "Knuckles Season 1 Episode 3", link: "https://filemoon.sx/d/rqhamx2ja1dl" },
+      { name: "Knuckles Season 1 Episode 4", link: "https://filemoon.sx/d/vckoduiu445m" },
+      { name: "Knuckles Season 1 Episode 5", link: "https://filemoon.sx/d/sgkeqlezu89s" },
+      { name: "Knuckles Season 1 Episode 6", link: "https://filemoon.sx/d/cphw8w1t6sok" },
         { name: "Shogun Season 1 Episode 9", link: "https://filemoon.sx/d/4odkgma4p7r9" },
         { name: "Fallout Season 1 Episode 1", link: "https://filemoon.sx/d/zhm69kdtf6q7" },
         { name: "Fallout Season 1 Episode 2", link: "https://filemoon.sx/d/twcats6o9sz3" },
