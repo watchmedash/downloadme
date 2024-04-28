@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Array of movie objects with name and link properties
     const movieLinks = [
       { name: "City Hunter - HD", link: "https://filemoon.sx/d/lsgouoeysos9" },
+      { name: "Infested - HD", link: "https://filemoon.sx/d/nt0tje3bmnwk" },
       { name: "Exhuma - HD", link: "https://filemoon.sx/d/zogrj8jfoth3" },
       { name: "Love Lies Bleeding - HD", link: "https://filemoon.sx/d/b4sognvvxpwr" },
       { name: "Possessions - HD", link: "https://filemoon.sx/d/7y931wdheqq3" },
