@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of show objects with name and link properties
     const showLinks = [
+      { name: "Tracker Season 1 Episode 9", link: "https://filemoon.sx/d/gai6ewt06idb" },
+      { name: "Tracker Season 1 Episode 10", link: "https://filemoon.sx/d/0t56nivw6m2g" },
+      { name: "Shogun Season 1 Episode 10", link: "https://filemoon.sx/d/1dpk627ukdb3" },
       { name: "Knuckles Season 1 Episode 1", link: "https://filemoon.sx/d/m84ct5vamiie" },
       { name: "Knuckles Season 1 Episode 2", link: "https://filemoon.sx/d/varxnz0hlkfx" },
       { name: "Knuckles Season 1 Episode 3", link: "https://filemoon.sx/d/rqhamx2ja1dl" },
