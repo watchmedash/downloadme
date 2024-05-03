@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of movie objects with name and link properties
     const movieLinks = [
-      { name: "Godzilla Minus One English Sub - HD", link: "https://filemoon.sx/d/o2l0al8v0cfz" },
+      { name: "Godzilla Minus One English Sub - HD", link: "https://filemoon.sx/d/m6qrmx30wcrt" },
       { name: "The Fall Guy - HDcam", link: "https://filemoon.sx/d/nlzjovt1zxbj" },
       { name: "Godzilla Minus One 2023 720p - HD", link: "https://filemoon.sx/d/eeqtotugh3d7" },
       { name: "Abigail - cam", link: "https://filemoon.sx/d/u9sqey69sr03" },
