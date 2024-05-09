@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of adult content objects with name and link properties
     const adultLinks = [
+      { name: "Late Bloomer 2024 Vivamax - HD", link: "https://filemoon.sx/d/5wo4z9pklq6k" },
+      { name: "Lady Guard 2024 Vivamax - HD", link: "https://filemoon.sx/d/0xqd3ek7tp8g" },
+      { name: "Dirty Ice Cream 2024 Vivamax - HD", link: "https://filemoon.sx/d/hucroq5c8hke" },
       { name: "Red Flag 2024 Vivamax - HD", link: "https://filemoon.sx/d/vah0fk2fazgd" },
       { name: "Sweet Release 2024 Vivamax - HD", link: "https://filemoon.sx/d/k7widr1fykez" },
       { name: "Stag 2024 Vivamax - HD", link: "https://filemoon.sx/d/dbofj8gmwhop" },
