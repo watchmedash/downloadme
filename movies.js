@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of movie objects with name and link properties
     const movieLinks = [
+      { name: "The Ministry of Ungentlemanly Warfare - HD", link: "https://filemoon.sx/d/r7uh2d7ghumq" },
+      { name: "Lazareth - HD", link: "https://filemoon.sx/d/u3mx6lhyrx8w" },
       { name: "Abigail - HD", link: "https://filemoon.sx/d/eo1s1txxranx" },
       { name: "Ghostbusters Frozen Empire - HD", link: "https://filemoon.sx/d/4eplqygy9a7z" },
       { name: "Godzilla Minus One English Sub - HD", link: "https://filemoon.sx/d/m6qrmx30wcrt" },
