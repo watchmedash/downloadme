@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of movie objects with name and link properties
     const movieLinks = [
+      { name: "Sting - HD", link: "https://filemoon.sx/d/c3a4hfydi8sk" },
+      { name: "The Image of You - HD", link: "https://filemoon.sx/d/odg4f6a90ilq" },
+      { name: "The Last Stop in Yuma County - HD", link: "https://filemoon.sx/d/nb1y8m0oy80d" },
       { name: "The Ministry of Ungentlemanly Warfare - HD", link: "https://filemoon.sx/d/r7uh2d7ghumq" },
       { name: "Lazareth - HD", link: "https://filemoon.sx/d/u3mx6lhyrx8w" },
       { name: "Abigail - HD", link: "https://filemoon.sx/d/eo1s1txxranx" },
