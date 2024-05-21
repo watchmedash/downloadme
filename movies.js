@@ -1,6 +1,14 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of movie objects with name and link properties
     const movieLinks = [
+      { name: "Thelma the Unicorn_2024 - HD", link: "https://filemoon.sx/d/j93a96q2w6ge" },
+      { name: "The Fall Guy 2024 - HD", link: "https://filemoon.sx/d/eshac8999qvr" },
+      { name: "Sasquatch Sunset 2024 - HD", link: "https://filemoon.sx/d/1xn5zj3xrcnx" },
+      { name: "Mothers Instinct 2024 - HD", link: "https://filemoon.sx/d/1agrp06esgyw" },
+      { name: "Mobile Suit Gundam Seed Freedom 2024 - HDts", link: "https://filemoon.sx/d/09iniocdg5qs" },
+      { name: "Mars Express - HD", link: "https://filemoon.sx/d/yke65nlv6rgc" },
+      { name: "End of the Rope - HD", link: "https://filemoon.sx/d/rme6ncvusncq" },
+      { name: "Challengers - HD", link: "https://filemoon.sx/d/j0fdvj8ocj6y" },
       { name: "Sting - HD", link: "https://filemoon.sx/d/c3a4hfydi8sk" },
       { name: "The Image of You - HD", link: "https://filemoon.sx/d/odg4f6a90ilq" },
       { name: "The Last Stop in Yuma County - HD", link: "https://filemoon.sx/d/nb1y8m0oy80d" },
