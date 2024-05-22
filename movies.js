@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of movie objects with name and link properties
     const movieLinks = [
+      { name: "The Fall Guy 2024 - HD", link: "https://filemoon.sx/d/393ga0jbdr6v" },
+      { name: "Boy Kills World - HD", link: "https://filemoon.sx/d/3cbx8wiuk9ic" },
       { name: "Thelma the Unicorn_2024 - HD", link: "https://filemoon.sx/d/j93a96q2w6ge" },
-      { name: "The Fall Guy 2024 - HD", link: "https://filemoon.sx/d/eshac8999qvr" },
       { name: "Sasquatch Sunset 2024 - HD", link: "https://filemoon.sx/d/1xn5zj3xrcnx" },
       { name: "Mothers Instinct 2024 - HD", link: "https://filemoon.sx/d/1agrp06esgyw" },
       { name: "Mobile Suit Gundam Seed Freedom 2024 - HDts", link: "https://filemoon.sx/d/09iniocdg5qs" },
