@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of movie objects with name and link properties
     const movieLinks = [
+      { name: "Atlas - HD", link: "https://filemoon.sx/d/kifuc1uic40c" },
+      { name: "My Oni Girl - HD", link: "https://filemoon.sx/d/xbzzej1jdyxr" },
+      { name: "Kingdom of the Planet of the Apes - HDts", link: "https://filemoon.sx/d/mpnkm13judxt" },
       { name: "Civil War 2024 - HD", link: "https://filemoon.sx/d/mpnkm13judxt" },
       { name: "South Park: The End of Obesity - HD", link: "https://filemoon.sx/d/mpnkm13judxt" },
       { name: "Reunion 2024 - HD", link: "https://filemoon.sx/d/1nh1lnqjlbre" },
