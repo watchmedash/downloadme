@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of movie objects with name and link properties
     const movieLinks = [
+      { name: "The First Omen - HD", link: "https://filemoon.sx/d/9l97vo5k2zjz" },
+      { name: "Tarot - HD", link: "https://filemoon.sx/d/7bt9sr9inzhv" },
       { name: "Atlas - HD", link: "https://filemoon.sx/d/kifuc1uic40c" },
       { name: "My Oni Girl - HD", link: "https://filemoon.sx/d/xbzzej1jdyxr" },
       { name: "Kingdom of the Planet of the Apes - HDts", link: "https://filemoon.sx/d/mpnkm13judxt" },
