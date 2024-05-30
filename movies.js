@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of movie objects with name and link properties
     const movieLinks = [
+      { name: "Furiosa: A Mad Max Saga - HDts", link: "https://filemoon.sx/d/pp5sg8ppa6r2" },
+      { name: "Kingdom of the Planet of the Apes - HD", link: "https://filemoon.sx/d/mpnkm13judxt" },
       { name: "The First Omen - HD", link: "https://filemoon.sx/d/9l97vo5k2zjz" },
       { name: "Tarot - HD", link: "https://filemoon.sx/d/7bt9sr9inzhv" },
       { name: "Atlas - HD", link: "https://filemoon.sx/d/kifuc1uic40c" },
