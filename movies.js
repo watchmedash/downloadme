@@ -1,6 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of movie objects with name and link properties
     const movieLinks = [
+      { name: "Succubus - HD", link: "https://filemoon.sx/d/pi4y283551n3" },
+      { name: "Wicked Little Letters - HD", link: "https://filemoon.sx/d/tmv3374v6fmb" },
+      { name: "Kevin Hart: The Kennedy Center Mark Twain Prize for American Humor - HD", link: "https://filemoon.sx/d/yo14rs3bjh07" },
+      { name: "Die Hart 2: Die Harter - HD", link: "https://filemoon.sx/d/jb6u0rzysumu" },
+      { name: "Poolman - HD", link: "https://filemoon.sx/d/ymfr9a2ndbjx" },
       { name: "Furiosa: A Mad Max Saga - HDts", link: "https://filemoon.sx/d/pp5sg8ppa6r2" },
       { name: "Kingdom of the Planet of the Apes - HD", link: "https://filemoon.sx/d/mpnkm13judxt" },
       { name: "The First Omen - HD", link: "https://filemoon.sx/d/9l97vo5k2zjz" },
