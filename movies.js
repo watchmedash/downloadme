@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of movie objects with name and link properties
     const movieLinks = [
+      { name: "Furiosa: A Mad Max Saga - HD", link: "https://filemoon.sx/d/n35e3dyfy182" },
       { name: "Succubus - HD", link: "https://filemoon.sx/d/pi4y283551n3" },
       { name: "Wicked Little Letters - HD", link: "https://filemoon.sx/d/tmv3374v6fmb" },
       { name: "Kevin Hart: The Kennedy Center Mark Twain Prize for American Humor - HD", link: "https://filemoon.sx/d/yo14rs3bjh07" },
