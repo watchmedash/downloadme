@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of movie objects with name and link properties
     const movieLinks = [
+      { name: "Marlon Wayans Good Grief - HD", link: "https://filemoon.sx/d/vahv3ztdbsna" },
+      { name: "Jo Koy Live from Brooklyn - HD", link: "https://filemoon.sx/d/x4iwezztazh3" },
       { name: "Furiosa: A Mad Max Saga - HD", link: "https://filemoon.sx/d/n35e3dyfy182" },
       { name: "Succubus - HD", link: "https://filemoon.sx/d/pi4y283551n3" },
       { name: "Wicked Little Letters - HD", link: "https://filemoon.sx/d/tmv3374v6fmb" },
