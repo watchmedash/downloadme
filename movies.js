@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of movie objects with name and link properties
     const movieLinks = [
+      { name: "Penduko - HD", link: "https://filemoon.sx/d/jcinefwqrjre" },
+      { name: "How to Rob a Bank - HD", link: "https://filemoon.sx/d/02cjhgvxnwvk" },
+      { name: "Under Paris - HD", link: "https://filemoon.sx/d/bv5g4zcwmfof" },
       { name: "Marlon Wayans Good Grief - HD", link: "https://filemoon.sx/d/vahv3ztdbsna" },
       { name: "Jo Koy Live from Brooklyn - HD", link: "https://filemoon.sx/d/x4iwezztazh3" },
       { name: "Furiosa: A Mad Max Saga - HD", link: "https://filemoon.sx/d/n35e3dyfy182" },
