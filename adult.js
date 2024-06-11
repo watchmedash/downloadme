@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of adult content objects with name and link properties
     const adultLinks = [
+      { name: "Sisid Marino 2024 Vivamax - HD", link: "https://filemoon.sx/d/bi40aw5yaolc" },
+      { name: "Blessed Ninong - HD", link: "https://filemoon.sx/d/3kvs6bnr6gsm" },
       { name: "Himas 2024 Vivamax - HD", link: "https://filemoon.sx/d/dodw9igydogo" },
       { name: "Kasalo Tayo - HD", link: "https://filemoon.sx/d/pf31krq0pofw" },
       { name: "Mahal Ko Ang Mahal Mo 2024 Vivamax - HD", link: "https://filemoon.sx/d/6y8qesq40pus" },
