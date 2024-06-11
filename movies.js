@@ -1,6 +1,14 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of movie objects with name and link properties
     const movieLinks = [
+      { name: "Am I OK? - HD", link: "https://filemoon.sx/d/huamkndi4i26" },
+      { name: "Baki Hanma VS Kengan Ashura - HD", link: "https://filemoon.sx/d/z8dmlx4asqtf" },
+      { name: "Big City Greens the Movie Spacecation - HD", link: "https://filemoon.sx/d/eajzyzy0dmhr" },
+      { name: "Hit Man - HD", link: "https://filemoon.sx/d/bl7lgsy54fs8" },
+      { name: "Kill Craft - HD", link: "https://filemoon.sx/d/nprrl0w8hydx" },
+      { name: "Late Bloomers - HD", link: "https://filemoon.sx/d/28d5b5t22wej" },
+      { name: "The Hangman - HD", link: "https://filemoon.sx/d/ykrvwms1c0a6" },
+      { name: "The Strangers Chapter 1 - HD", link: "https://filemoon.sx/d/1fmkenwlm45b" },
       { name: "Penduko - HD", link: "https://filemoon.sx/d/jcinefwqrjre" },
       { name: "How to Rob a Bank - HD", link: "https://filemoon.sx/d/02cjhgvxnwvk" },
       { name: "Under Paris - HD", link: "https://filemoon.sx/d/bv5g4zcwmfof" },
