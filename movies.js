@@ -1,6 +1,14 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of movie objects with name and link properties
     const movieLinks = [
+      { name: "Jackdaw - HD", link: "https://filemoon.sx/d/r9cugnia1x50" },
+      { name: "Keith Robinson Different Strokes - HD", link: "https://filemoon.sx/d/zm73ea2bbi32" },
+      { name: "Martingale - HD", link: "https://filemoon.sx/d/s1ehw6urvr3m" },
+      { name: "Bass Impact - HD", link: "https://filemoon.sx/d/eiiakvxs8i9w" },
+      { name: "Unsung Hero - HD", link: "https://filemoon.sx/d/voufba8hi5rg" },
+      { name: "Wild Eyed and Wicked - HD", link: "https://filemoon.sx/d/g0vu6p7mwlnp" },
+      { name: "Tipline Mysteries Dial 1 for Murder - HD", link: "https://filemoon.sx/d/zoyavj1dxi9c" },
+      { name: "Before the World Set on Fire - HD", link: "https://filemoon.sx/d/erbxunjxq9g6" },
       { name: "Am I OK? - HD", link: "https://filemoon.sx/d/huamkndi4i26" },
       { name: "Baki Hanma VS Kengan Ashura - HD", link: "https://filemoon.sx/d/z8dmlx4asqtf" },
       { name: "Big City Greens the Movie Spacecation - HD", link: "https://filemoon.sx/d/eajzyzy0dmhr" },
