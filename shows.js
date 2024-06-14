@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of show objects with name and link properties
     const showLinks = [
+      { name: "The Boys Season 4 Episode 1", link: "https://drive.google.com/file/d/1L0-GdfPrKkXvWRn_5_2zPRo2PtdGFaxZ/view?usp=sharing" },
+      { name: "The Boys Season 4 Episode 2", link: "https://drive.google.com/file/d/1Y7mkhwuqGVq3gAgcNywHzfJ67qUcccjN/view?usp=sharing" },
+      { name: "The Boys Season 4 Episode 3", link: "https://drive.google.com/file/d/1PXOIl-7jDpbPFHX1ePrPjX0Cwpvtujvk/view?usp=sharing" },
       { name: "Tracker Season 1 Episode 13", link: "https://filemoon.sx/d/em4wjczoy658" },
       { name: "Tracker Season 1 Episode 12", link: "https://filemoon.sx/d/5po7p3ywp1bs" },
       { name: "Tracker Season 1 Episode 11", link: "https://filemoon.sx/d/4be3u21qgpck" },

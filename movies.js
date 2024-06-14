@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of movie objects with name and link properties
     const movieLinks = [
+      { name: "Ultraman Rising - HD", link: "https://drive.google.com/file/d/1u6Fwvb5BjoIGj8YqH_DYhNIYDGEmd4oA/view?usp=sharing" },
+      { name: "I Saw the TV Glow - HD", link: "https://drive.google.com/file/d/14IF_e6MvsHHmFBc_tLSD3lzp7SGNV6-G/view?usp=sharing" },
       { name: "Jackdaw - HD", link: "https://filemoon.sx/d/r9cugnia1x50" },
       { name: "Keith Robinson Different Strokes - HD", link: "https://filemoon.sx/d/zm73ea2bbi32" },
       { name: "Martingale - HD", link: "https://filemoon.sx/d/s1ehw6urvr3m" },
