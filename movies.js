@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of movie objects with name and link properties
     const movieLinks = [
+      { name: "Locked in My House 2024 - HD", link: "https://dupload.net/9mj4p6iy2k2o" },
+      { name: "Flynn 2024 - HD", link: "https://dupload.net/4iv00aqbqlm8" },
       { name: "Ultraman Rising - HD", link: "https://drive.google.com/file/d/1u6Fwvb5BjoIGj8YqH_DYhNIYDGEmd4oA/view?usp=sharing" },
       { name: "I Saw the TV Glow - HD", link: "https://drive.google.com/file/d/14IF_e6MvsHHmFBc_tLSD3lzp7SGNV6-G/view?usp=sharing" },
       { name: "Jackdaw - HD", link: "https://filemoon.sx/d/r9cugnia1x50" },
