@@ -697,86 +697,93 @@ document.addEventListener("DOMContentLoaded", function() {
     ];
 
     const movieListContainer = document.getElementById("movieList");
-    const loadMoreBtn1 = document.getElementById("loadMoreBtn1");
-    const searchInput = document.getElementById("searchInput");
+        const loadMoreBtn1 = document.getElementById("loadMoreBtn1");
+        const searchInput = document.getElementById("searchInput");
 
-    let moviesDisplayed = 0;
+        let moviesDisplayed = 0;
 
-    function displayMovies(startIndex, endIndex) {
-        let displayedCount = 0;
+        function displayMovies(startIndex, endIndex) {
+            let displayedCount = 0;
 
-        for (let i = startIndex; i < endIndex && i < movieLinks.length; i++) {
-            if (movieLinks[i] && movieLinks[i].name.toLowerCase().includes(searchInput.value.toLowerCase())) {
-                const link = document.createElement("p");
-                link.innerHTML = `<a href="${movieLinks[i].link}"><i class="fa fa-download"></i> ${movieLinks[i].name}</a>`;
-                movieListContainer.appendChild(link);
-                displayedCount++;
+            for (let i = startIndex; i < endIndex && i < movieLinks.length; i++) {
+                if (movieLinks[i] && movieLinks[i].name.toLowerCase().includes(searchInput.value.toLowerCase())) {
+                    const link = document.createElement("p");
+                    link.innerHTML = `<a href="#" data-link="${movieLinks[i].link}"><i class="fa fa-download"></i> ${movieLinks[i].name}</a>`;
+                    movieListContainer.appendChild(link);
+                    displayedCount++;
 
-                if (displayedCount % 12 === 0 && i !== endIndex - 1) {
-                insertAdBanner();
+                    if (displayedCount % 12 === 0 && i !== endIndex - 1) {
+                        insertAdBanner();
+                    }
+
+                    // Event listener for redirect
+                    link.querySelector("a").addEventListener("click", function(e) {
+                        e.preventDefault();
+                        redirectWithCountdown(this.getAttribute("data-link"));
+                    });
+                }
             }
+
+            moviesDisplayed += displayedCount;
+
+            // Check if any movies were displayed
+            if (displayedCount === 0 && moviesDisplayed === 0) {
+                const noResultsMsg = document.createElement("p");
+                noResultsMsg.textContent = "No items found.";
+                movieListContainer.appendChild(noResultsMsg);
             }
         }
 
-        moviesDisplayed += displayedCount;
+        function insertAdBanner() {
+            const adContainer = document.createElement("div");
+            adContainer.style.width = "100%";
+            adContainer.style.textAlign = "center";
+            movieListContainer.appendChild(adContainer);
 
-        // Check if any movies were displayed
-        if (displayedCount === 0 && moviesDisplayed === 0) {
-            const noResultsMsg = document.createElement("p");
-            noResultsMsg.textContent = "No items found.";
-            movieListContainer.appendChild(noResultsMsg);
+            const adScript = document.createElement("script");
+            adScript.type = "text/javascript";
+            adScript.innerHTML = `
+                var atOptions = {
+                    'key': '562360130da748b77364948cbf50e10b',
+                    'format': 'iframe',
+                    'height': 90,
+                    'width': 728,
+                    'params': {}
+                };
+            `;
+            adContainer.appendChild(adScript);
+
+            const adScriptSrc = document.createElement("script");
+            adScriptSrc.type = "text/javascript";
+            adScriptSrc.src = "//perilastronaut.com/b9a8423ba82179e793ae4a5b1096f541/invoke.js";
+            adContainer.appendChild(adScriptSrc);
         }
-    }
 
-    function insertAdBanner() {
-        const adContainer = document.createElement("div");
-        adContainer.style.width = "100%"; // Set the width of the ad container
-        adContainer.style.textAlign = "center"; // Center the ad banner
-        movieListContainer.appendChild(adContainer);
-
-        const adScript = document.createElement("script");
-        adScript.type = "text/javascript";
-        adScript.innerHTML = `
-            var atOptions = {
-                'key': '562360130da748b77364948cbf50e10b',
-                'format': 'iframe',
-                'height': 90,
-                'width': 728,
-                'params': {}
-            };
-        `;
-        adContainer.appendChild(adScript);
-
-        const adScriptSrc = document.createElement("script");
-        adScriptSrc.type = "text/javascript";
-        adScriptSrc.src = "//perilastronaut.com/b9a8423ba82179e793ae4a5b1096f541/invoke.js";
-        adContainer.appendChild(adScriptSrc);
-    }
-
-
-    function loadMoreMovies() {
-        const remainingMovies = movieLinks.length - moviesDisplayed;
-        const batchSize = Math.min(15, remainingMovies);
-        if (batchSize > 0) {
-            displayMovies(moviesDisplayed, moviesDisplayed + batchSize);
+        function redirectWithCountdown(targetUrl) {
+            window.location.href = `redirect.html?url=${encodeURIComponent(targetUrl)}`;
         }
-        if (remainingMovies <= 0) {
-            loadMoreBtn1.style.display = "none"; // Hide the button when no more movies are left
+
+        function loadMoreMovies() {
+            const remainingMovies = movieLinks.length - moviesDisplayed;
+            const batchSize = Math.min(15, remainingMovies);
+            if (batchSize > 0) {
+                displayMovies(moviesDisplayed, moviesDisplayed + batchSize);
+            }
+            if (remainingMovies <= 0) {
+                loadMoreBtn1.style.display = "none";
+            }
         }
-    }
 
-    // Initially display the first batch of movies
-    loadMoreMovies();
+        // Initially display the first batch of movies
+        loadMoreMovies();
 
-    // Event listener for the "Load More" button
-    loadMoreBtn1.addEventListener("click", loadMoreMovies);
+        // Event listener for the "Load More" button
+        loadMoreBtn1.addEventListener("click", loadMoreMovies);
 
-    // Event listener for the search input
-    searchInput.addEventListener("input", function() {
-        moviesDisplayed = 0; // Reset the counter when searching
-        movieListContainer.innerHTML = ""; // Clear the movie list container
-        displayMovies(0, movieLinks.length); // Re-display all movies based on search input
+        // Event listener for the search input
+        searchInput.addEventListener("input", function() {
+            moviesDisplayed = 0;
+            movieListContainer.innerHTML = "";
+            displayMovies(0, movieLinks.length);
+        });
     });
-
-
-});
