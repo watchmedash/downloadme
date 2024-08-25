@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of movie objects with name and link properties
     const movieLinks = [
+      { name: "Longlegs 2024 - HD", link: "https://drive.google.com/file/d/1Cm95Q7LFIRYS1XZyk4mkK2xZQ97VFGeP/view?usp=sharing" },
       { name: "Locked in My House 2024 - HD", link: "https://dupload.net/9mj4p6iy2k2o" },
       { name: "Flynn 2024 - HD", link: "https://dupload.net/4iv00aqbqlm8" },
       { name: "Ultraman Rising - HD", link: "https://drive.google.com/file/d/1u6Fwvb5BjoIGj8YqH_DYhNIYDGEmd4oA/view?usp=sharing" },
