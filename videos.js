@@ -1,9 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of video objects with name and link properties
     const videoLinks = [
-        { name: "Video 1", link: "link-to-Video1" },
-        { name: "Video 2", link: "link-to-Video2" },
-        { name: "Video 3", link: "link-to-Video3" },
+        { name: "Dash-TV.apk (10 MB)", link: "https://www.mediafire.com/file/o4w5p75zp2bzrau/Dash-TV.apk/file" },
         // Add more video objects as needed...
     ];
 
