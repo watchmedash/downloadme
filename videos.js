@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
         { name: "Dash-TV.apk (10 MB)", link: "https://www.mediafire.com/file/o4w5p75zp2bzrau/Dash-TV.apk/file" },
         { name: "Dashflix v1.0.4.apk (10 MB)", link: "https://www.mediafire.com/file/ahlssadnsvvff26/Dashflix_v1.0.4.apk/file" },
         { name: "Dash Toons.apk (8 MB)", link: "https://www.mediafire.com/file/0nnfxz3pq15jn97/Dash_Toons.apk/file" },
+        { name: "Cruisehub (sports & movies)", link: "https://cruisehub.live/Cruisehub-App.apk" },
         // Add more video objects as needed...
     ];
 
