@@ -980,10 +980,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     movieListContainer.appendChild(link);
                     displayedCount++;
 
-                    if (displayedCount % 12 === 0 && i !== endIndex - 1) {
-                        insertAdBanner();
-                    }
-
                     // Event listener for redirect
                     link.querySelector("a").addEventListener("click", function(e) {
                         e.preventDefault();
@@ -1000,31 +996,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 noResultsMsg.textContent = "No items found.";
                 movieListContainer.appendChild(noResultsMsg);
             }
-        }
-
-        function insertAdBanner() {
-            const adContainer = document.createElement("div");
-            adContainer.style.width = "100%";
-            adContainer.style.textAlign = "center";
-            movieListContainer.appendChild(adContainer);
-
-            const adScript = document.createElement("script");
-            adScript.type = "text/javascript";
-            adScript.innerHTML = `
-                var atOptions = {
-                    'key': '562360130da748b77364948cbf50e10b',
-                    'format': 'iframe',
-                    'height': 90,
-                    'width': 728,
-                    'params': {}
-                };
-            `;
-            adContainer.appendChild(adScript);
-
-            const adScriptSrc = document.createElement("script");
-            adScriptSrc.type = "text/javascript";
-            adScriptSrc.src = "//perilastronaut.com/b9a8423ba82179e793ae4a5b1096f541/invoke.js";
-            adContainer.appendChild(adScriptSrc);
         }
 
         function redirectWithCountdown(targetUrl) {
