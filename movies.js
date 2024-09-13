@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Array of movie objects with name and link properties
     const movieLinks = [
+{ name: "The Crow 2024 - HD", link: "https://usersdrive.com/v67cl1dxpk40.html" },
 { name: "Rebel Ridge 2024 - HD", link: "https://drive.google.com/file/d/1Xws55Y-0A1GrqOwqID3F1rrqJXq6LZ61/view?usp=sharing" },
 { name: "Bleach Movie 1 - HD", link: "https://drive.google.com/file/d/1d5KlfJoaRf9ZBVf6Ndd9xV3PVe3zLYmh/view?usp=sharing" },
 { name: "Bleach Movie 2 - HD", link: "https://drive.google.com/file/d/1zw8p0JXoHCJzqgf6kYM81PNEmD0DEkl3/view?usp=sharing" },
