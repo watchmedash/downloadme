@@ -20,15 +20,10 @@ const urls = [
 "https://www.boardreader.com/s/dashflix",
 "https://www.exalead.com/search/web/results/?q=dashflix",
 "https://www.peekier.com/#!dashflix",
-"https://www.searx.me/?q=dashflix",
-"https://www.gigablast.com/search?q=dashflix",
-"https://dogpile.com/serp?q=dashflix",
-"https://neeva.com/search?q=dashflix",
 "https://www.yippy.com/search?q=dashflix",
 "https://eTools.ch/results.php?query=dashflix",
 "https://search.givero.com/?q=dashflix",
 "https://www.izito.com/?q=dashflix",
-"https://www.infotiger.com/search?q=dashflix",
 "https://zapmeta.com/?q=dashflix"
 ];
 
