@@ -1,3 +1,56 @@
+const urls = [
+"https://search.brave.com/search?q=dashflix",
+"https://www.google.com/search?q=dashflix",
+"https://www.bing.com/search?q=dashflix",
+"https://duckduckgo.com/?t=h_&q=dashflix",
+"https://www.yahoo.com/search?p=dashflix",
+"https://www.ask.com/web?q=dashflix",
+"https://search.aol.com/aol/search?q=dashflix",
+"https://yandex.com/search/?text=dashflix",
+"https://www.ecosia.org/search?q=dashflix",
+"https://swisscows.com/en/web?query=dashflix",
+"https://www.qwant.com/?q=dashflix",
+"https://www.startpage.com/sp/search?query=dashflix",
+"https://www.mojeek.com/search?q=dashflix",
+"https://metager.org/meta/meta.english?eingabe=dashflix",
+"https://search.privacywall.org/search?q=dashflix",
+"https://search.disconnect.me/searchTerms/search?q=dashflix",
+"https://gibiru.com/results.html?q=dashflix",
+"https://www.wolframalpha.com/input/?i=dashflix",
+"https://www.boardreader.com/s/dashflix",
+"https://www.exalead.com/search/web/results/?q=dashflix",
+"https://www.peekier.com/#!dashflix",
+"https://www.searx.me/?q=dashflix",
+"https://www.gigablast.com/search?q=dashflix",
+"https://dogpile.com/serp?q=dashflix",
+"https://neeva.com/search?q=dashflix",
+"https://www.yippy.com/search?q=dashflix",
+"https://eTools.ch/results.php?query=dashflix",
+"https://search.givero.com/?q=dashflix",
+"https://www.izito.com/?q=dashflix",
+"https://www.infotiger.com/search?q=dashflix",
+"https://zapmeta.com/?q=dashflix"
+];
 
-const urls=["https://www.profitablecpmrate.com/mysrp0jh?key=f5f6d720528f7ae8e6966f24f61c5353","https://www.profitablecpmrate.com/kvrdhfkh?key=b4558626761a31bf34bccceefad020e2","https://www.profitablecpmrate.com/zais5cibtp?key=db498aaaeedfcd9c904e1608f7d382b8","https://filthygracefulspinach.com/ffi0gzec?key=d16de9ae913ac5a8572c3bf248bfe2c4","https://www.profitablecpmrate.com/igz114ifu5?key=dac8af4c61339cbb7b75cedac5c51ebc",
-"https://www.profitablecpmrate.com/wjw8rkzh?key=f929f2d7c85ef30514ef5e786d654e8b","https://www.profitablecpmrate.com/dnmgfu17?key=af9727fbfdc251de6af940cd3896befa","https://www.profitablecpmrate.com/mesh3n0u?key=268e431516ebfd4b4ef9d26f58ecc960","https://www.profitablecpmrate.com/jdwkekd9g?key=9df5105a9956c6cdf790e8d860e5e900","https://www.profitablecpmrate.com/h36n8i9imn?key=6f8de694f550e04e57f229b2c1a098f9","https://nicelydesignaterefrigerate.com/a4pj9xk7?key=5e55af81822850e7f6de3adbfb0e2f0b"],switchInterval=3e4;let currentIndex=0,intervalId;function openPage(url){const loadingIndicator=document.getElementById("loading");loadingIndicator.style.display="block";window.open(url,"_blank"),loadingIndicator.style.display="none"}function rotatePages(){openPage(urls[currentIndex]),currentIndex=(currentIndex+1)%urls.length}document.getElementById("startButton").addEventListener("click",function(){rotatePages(),intervalId=setInterval(rotatePages,switchInterval),this.disabled=!0,this.style.display="none"});
+const switchInterval = 10000; // 30 seconds
+let currentIndex = 0;
+let intervalId;
+
+function openPage(url) {
+    const loadingIndicator = document.getElementById("loading");
+    loadingIndicator.style.display = "block";
+    window.open(url, "_blank");
+    loadingIndicator.style.display = "none";
+}
+
+function rotatePages() {
+    openPage(urls[currentIndex]);
+    currentIndex = (currentIndex + 1) % urls.length;
+}
+
+document.getElementById("startButton").addEventListener("click", function() {
+    rotatePages();
+    intervalId = setInterval(rotatePages, switchInterval);
+    this.disabled = true;
+    this.style.display = "none";
+});
