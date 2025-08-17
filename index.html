@@ -1,534 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Watch free movies and TV series online at Dashflix. Enjoy a vast library of genres including action, comedy, drama, horror, anime, and live sports. Stream the latest releases, timeless classics, and trending shows in high quality for free.">
-    <meta name="keywords" content="Watch Free Movies, Stream Movies Online, Free TV Series, Live News, Live Sports Streaming, Anime, Drama Series, Online Streaming, Dashflix, Movie Genres, Latest Releases, Classic Films, Popular TV Shows, High-Quality Streaming, Action Movies, Comedy Movies, Horror Films, Family Movies, Watch Anytime,
-    Stream Anywhere, Free Entertainment, Watch Anime Online,
-    Sports Live, Trending TV Shows, Movies for Free,
-    Stream TV Shows, Free Movie Downloads, Latest Anime Episodes,
-    Free Live Sports, Binge-Watch TV Series, On-Demand Streaming,
-    Free Movie Streaming, Anime Series, Free Drama Movies,
-    Watch Free Online, TV Series Online, Live News Updates,
-    Sports Highlights, Free Anime Streaming, Best Free Movies,
-    Free Movies HD, Family-Friendly Movies, Free TV Show Episodes,
-    Online Movie Watching, Stream Live Sports, Free Movies and Series,
-    Watch Movies Without Registration, Watch TV Shows for Free,
-    Watch Anime for Free, Popular Anime Shows, Stream Movies Anytime,
-    Live News Streaming, Trending Movies, Sports Streaming Free,
-    Watch Classic Movies, Popular TV Shows Streaming,
-    Free Action Movies, Best TV Shows to Watch,
-    Watch Online for Free, Top Anime Series, Free Sports Coverage,
-    Live Streaming Sports, Latest TV Series, Movie Recommendations,
-    Free Movies Online, Anime Episodes Online, Stream Series Free,
-    Watch Full Movies Free, TV Show Streaming Free,
-    Watch Anime Subbed, Free Entertainment Online,
-    Movie Genres Online, High-Quality Anime Streaming,
-    Watch TV Shows Anytime, Free Drama Series,
-    Latest Movie Releases, Stream Free Live News,
-    Watch Free Anime Online, Live Sports Events Free,
-    Free Movies and TV Shows, Watch Documentaries Online,
-    Stream New Releases, Binge-Watch Free Movies,
-    Family Movies Online, Anime and Manga,
-    Free Online TV Shows, Top Rated Movies Free">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="Dashflix - Watch Free Movies and TV Series Online" />
-    <meta property="og:description" content="Stream your favorite movies and TV series for free at Dashflix. Explore a wide variety of genres including anime and live sports, and enjoy high-quality content anytime, anywhere." />
-    <meta property="og:url" content="https://dashflix.site" />
-    <meta property="og:image" content="https://i.postimg.cc/YCWDLrdF/th.webp" />
-    <meta property="og:image:alt" content="Dashflix - Stream Free Movies and TV Series" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Dashflix - Watch Free Movies and TV Series Online" />
-    <meta name="twitter:description" content="Enjoy streaming free movies, TV shows, live news, sports, and anime on Dashflix. Discover new favorites and classic hits in high-quality." />
-    <meta name="twitter:image" content="https://i.postimg.cc/YCWDLrdF/th.webp" />
-    <meta name="twitter:image:alt" content="Dashflix - Stream Free Movies and TV Series" />
-    <link rel="canonical" href="https://dashflix.site/" />
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;500;600;700&display=swap"/>
-    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=64b0f5079f35fb00121494d9&product=sticky-share-buttons" async></script>
-    <title>Dashflix - Watch Free Movies and TV Series Online</title>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Dashflix",
-        "url": "https://dashflix.site",
-        "description": "Stream free movies, TV series, live news, sports, and anime online with Dashflix. Explore a variety of genres and enjoy high-quality content."
-    }
-    </script>
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<style>
-    .search-container {
-      margin-top: 20px;
-      text-align: center;
-      width: 90%;
-      margin: 0 auto;
-      margin-bottom: 0;
-    }
-    .search-container form {
-      padding: 8px;
-      position: relative;
-      display: flex;
-      width: 90%;
-      margin: 10px auto;
-    }
-    .search-container input {
-      flex: 1;
-      padding: 8px 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 18px;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    }
-    .search-container button {
-      background-color: transparent;
-      border: none;
-      outline: none;
-      padding: 8px;
-      cursor: pointer;
-      position: absolute;
-      right: 5px;
-    }
-    .search-container button i {
-      font-size: 20px;
-      color: black;
-    }
-    #searchResults {
-      position: absolute;
-      z-index: 1000;
-      left: 50%;
-      transform: translateX(-50%);
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <title>DashTube</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    #logout-modal {
+      position: fixed;
+      z-index: 99;
+      left: 0; top: 0; width: 100vw; height: 100vh;
       display: none;
-      width: 80%;
-      margin: 0 auto;
-      padding: 10px;
-      background-color: rgba(211, 211, 211, 1);
-      border-radius: 5px;
-      color: black;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      font-weight: bold;
-    }
-    #searchResults ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    #searchResults li {
-      margin-bottom: 5px;
-      display: flex;
       align-items: center;
+      justify-content: center;
     }
-    #searchResults img {
-      width: 50px;
-      height: auto;
-      margin-right: 10px;
+    #logout-modal.active { display: flex; }
+    #logout-modal .modal-backdrop {
+      position: absolute;
+      left:0; top:0; width:100vw; height:100vh;
+      background: rgba(0,0,0,0.6);
+      z-index:1;
     }
-    #searchResults a {
-      font-weight: bold;
-      text-decoration: none;
-      color: black;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    #logout-modal .modal-dialog {
+      position: relative;
+      z-index:2;
+      background: #232327;
+      color: #fff;
+      border-radius: 1.2em;
+      padding: 2em 2.1em 1.5em 2.1em;
+      box-shadow: 0 6px 40px #000b;
+      min-width: 280px;
+      max-width: 90vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
-    #searchResults a:hover {
-      text-decoration: underline;
+    #logout-modal .modal-message i {
+      font-size: 2.2em;
+      color: #ff3437;
+      margin-bottom: 0.6em;
     }
-    #searchResults p {
-      color: black;
+    #logout-modal .modal-message p {
+      margin: 0 0 1em 0;
+      font-size: 1.13em;
+    }
+    #logout-modal .modal-actions {
+      display: flex;
+      gap: 1.3em;
+    }
+    #logout-modal .modal-actions button {
+      padding: 0.6em 1.3em;
+      border-radius: 2em;
+      border: none;
+      font-size: 1.05em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .15s;
+    }
+    #logout-modal #logout-cancel {
+      background: #333;
+      color: #fff;
+    }
+    #logout-modal #logout-cancel:hover {
+      background: #222;
+    }
+    #logout-modal #logout-confirm {
+      background: #ff3437;
+      color: #fff;
+    }
+    #logout-modal #logout-confirm:hover {
+      background: #b0292c;
     }
 
-.faq-section {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
-  color: #fff;
-  background-color: #1e1e1e rgba(0, 0, 0, 0.5);
-  font-family: Arial, sans-serif;
-}
-
-.faq-section h2 {
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.faq-item {
-  border-top: 1px solid #333;
-}
-
-.faq-question {
-  width: 100%;
-  background: none;
-  border: none;
-  font-weight: bold;
-  color: #fff;
-  text-align: left;
-  font-size: 1.2rem;
-  padding: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.faq-question:hover {
-  background-color: #222;
-}
-
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  background-color: #222;
-  padding: 0 1rem;
-  transition: max-height 0.4s ease, padding 0.4s ease;
-}
-
-.faq-item.active .faq-answer {
-  max-height: 200px;
-  padding: 1rem;
-}
-
-.faq-question .icon {
-  font-size: 1.5rem;
-  transition: transform 0.3s;
-}
-
-.faq-item.active .icon {
-  transform: rotate(45deg);
-}
-
-.trending-row {
-  display: flex;
-  overflow-x: auto;
-  gap: 0.5rem;
-  scroll-behavior: smooth;
-  padding: 0 2rem 10px;
-}
-
-.trending-row::-webkit-scrollbar {
-  display: none;
-}
-
-.trending-card {
-  position: relative;
-  min-width: 180px;
-  flex-shrink: 0;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.trending-card:hover {
-  transform: scale(1.05);
-}
-
-.trending-card img {
-  width: auto;
-  max-height: 200px;
-  border-radius: 5px;
-  display: block;
-}
-
-.media-type {
-  font-family: 'Roboto', sans-serif;
-  position: absolute;
-  bottom: 10px;
-  right: 60px;
-  background: rgba(0, 0, 0, 0.9);
-  color: white;
-  font-size: 0.85rem;
-  font-weight: bold;
-  padding: 4px 8px;
-  border-radius: 6px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  text-transform: uppercase;
-}
-
-.trending-card:hover .media-type {
-  opacity: 1;
-}
-
-
-.rank-badge {
-  font-family: 'Roboto', sans-serif;
-  position: absolute;
-  top: 1px;
-  left: 6px;
-  color: black;
-  font-size: 4.5rem;
-  font-weight: bold;
-  padding: 1px 6px;
-  background: transparent;
-  text-align: center;
-  line-height: 1.2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-shadow:
-    -1px -1px 0px white,
-    1px -1px 0px white,
-    -1px 1px 0px white,
-    1px 1px 0px white;
-}
-
-.scroll-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 42px;
-  height: 42px;
-  background: rgba(0, 0, 0, 0.6);
-  border: none;
-  border-radius: 50%;
-  color: white;
-  cursor: pointer;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-  font-size: 1.1rem;
-}
-
-.scroll-btn:hover {
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.scroll-btn.left {
-  left: 5px;
-}
-
-.scroll-btn.right {
-  right: 5px;
-}
-
-.trending-section h2 {
-  color: white;
-  position: relative;
-  left: 30px;
-}
-
-.trending-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-  height: 200px; /* Match the poster height */
-}
-
-.icon-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Responsive columns */
-    gap: 15px;
-    text-align: center;
-    padding: 20px;
-  }
-  .icon-grid a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    padding: 15px;
-    border-radius: 10px;
-    background: #222;
-    color: white;
-    font-size: 14px;
-    transition: 0.3s;
-  }
-  .icon-grid a:hover {
-    background: #444;
-  }
-  .icon-grid i {
-    font-size: 30px;
-    margin-bottom: 5px;
-  }
+    /* Logout Icon Styling */
+    .logout-btn {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.45em;
+      cursor: pointer;
+      margin-left: 1em;
+      transition: color 0.2s;
+    }
+    .logout-btn:hover,
+    .logout-btn:focus {
+      color: #ff3437;
+    }
+    /* Make sure the theme toggle & logout button play nice on mobile! */
+    @media (max-width: 600px) {
+      .header-controls {
+        flex-wrap: wrap;
+        gap: 0.7em;
+      }
+      .logout-btn {
+        font-size: 1.18em;
+        margin-left: 0.5em;
+      }
+    }
   </style>
 </head>
-<body oncontextmenu="return false;">
+<body>
   <header>
-  <nav>
-  <div class="logo-title-container">
-  <div class="logo-container">
-  <img src="https://i.postimg.cc/qMFTZzvm/logodf.webp" alt="Dashflix Logo">
-  </div>
-  </div>
-  <div class="nav-links">
-  <ul><li><a href="adult.html"><i class="fas fa-cocktail"></i></a></li></ul>
-  <ul><li><a href="donate.html"><i class="fas fa-donate"></i></a></li></ul>
-  </div>
-  </nav>
+    <div class="logo"><i class="fab fa-youtube"></i> DashTube</div>
+    <div class="header-controls">
+      <div class="slider-toggle-container">
+        <div class="slider-toggle" id="slider-toggle"></div>
+      </div>
+      <div class="search-group">
+        <input id="search" type="text" placeholder="Search videos..."/>
+        <button id="search-btn"><i class="fas fa-search"></i></button>
+      </div>
+      <button class="theme-toggle" id="theme-toggle-btn" type="button"></button>
+    </div>
   </header>
-<div class="search-container">
-<form id="searchForm">
-<input type="text" id="search" placeholder="Search...">
-<button type="submit"><i class="fa fa-search"></i></button>
-</form>
-<div id="searchResults">
-<ul></ul>
-</div>
-</div>
-<div class="sharethis-inline-share-buttons"></div>
-<section class="trending-section">
-  <h2>Trending Now</h2>
-  <div class="trending-wrapper">
-    <button class="scroll-btn left"><i class="fas fa-arrow-left"></i></button>
-    <div id="trending-container" class="trending-row"></div>
-    <button class="scroll-btn right"><i class="fas fa-arrow-right"></i></button>
-  </div>
-</section>
 
-<div class="about-container">
-<div class="icon-grid">
-<a href="movies.html"><i class="fas fa-film"></i> Movies</a>
-<a href="shows.html"><i class="fas fa-tv"></i> Shows</a>
-<a href="trailer.html"><i class="fas fa-video"></i> Trailers</a>
-<a href="tvplus.html"><i class="fas fa-broadcast-tower"></i> Live TV</a>
-<a href="requested.html"><i class="fas fa-list"></i> Requested</a>
-<a href="watchlist.html"><i class="fas fa-bookmark"></i> Watchlist</a>
-<a href="request.html"><i class="fas fa-comments"></i> Request</a>
-</div>
-<section class="faq-section">
-  <h2>Frequently Asked Questions</h2>
-  <div class="faq-item">
-    <button class="faq-question">
-      What is Dashflix?
-      <span class="icon">+</span>
-    </button>
-    <div class="faq-answer">
-Dashflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.
-You can watch as much as you want, whenever you want without a single commercial - all for one low monthly price. There's always something new to discover and new TV shows and movies are added everyday!
-    </div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-question">
-      Do I need an account?
-      <span class="icon">+</span>
-    </button>
-    <div class="faq-answer">
-      No account is required to watch or download content.
-    </div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-question">
-      Is this service free?
-      <span class="icon">+</span>
-    </button>
-    <div class="faq-answer">
-      Yes, everything here is available for free!
-    </div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-question">
-      What kind of movies are available?
-      <span class="icon">+</span>
-    </button>
-    <div class="faq-answer">
-      Access a vast collection of movies, ranging from the latest releases
-      to classic hits. Whether you're in the mood for action, drama, comedy, or adventure, there's always something for everyone.
-    </div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-question">
-      Will the videos play smoothly?
-      <span class="icon">+</span>
-    </button>
-    <div class="faq-answer">
-      Enjoy smooth, uninterrupted playback thanks to videos embedded from trusted third-party sources.
-    </div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-question">
-      How do I find what I want to watch?
-      <span class="icon">+</span>
-    </button>
-    <div class="faq-answer">
-      With a streamlined interface, you can quickly find and stream your favorite titles without
-      unnecessary steps or delays.
-    </div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-question">
-      What is the video quality like?
-      <span class="icon">+</span>
-    </button>
-    <div class="faq-answer">
-      All the content you find on <strong>Dashflix</strong> is streamed from reliable
-      video hosting sites, ensuring that you get the best possible video quality available for each title.
-    </div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-question">
-      Do I need to download anything?
-      <span class="icon">+</span>
-    </button>
-    <div class="faq-answer">
-      For most titles, you can stream directly in your browser with no downloads required.
-      However, for selected movies and shows, we also provide a download option so you can enjoy them offline at your convenience.
-    </div>
-  </div>
-
-  <div class="faq-item">
-    <button class="faq-question">
-      Can I watch from anywhere?
-      <span class="icon">+</span>
-    </button>
-    <div class="faq-answer">
-      Enjoy your favorite movies and shows at any time, from anywhere, with just an internet connection.
-    </div>
-  </div>
-</section>
-<p>
-<strong>Disclaimer:</strong> All embedded videos and content on <strong>Dashflix</strong> are sourced from publicly
-available platforms or sites that allow embedding. The site itself does not verify the copyright status of the
-materials, nor does it own the rights to any of the media. Users are advised to use the service responsibly and
-ensure that their viewing aligns with applicable laws in their jurisdiction.
-</p>
-</div>
-
-<footer>
-<nav class="footer-nav">
-<ul class="footer-links">
-<li><a href="contact.html">Contact Us</a></li>
-<li><a href="privacy policy.html">Privacy Policy</a></li>
-<li><a href="dmca.html">DMCA</a></li>
-</ul>
-<div class="social-icons">
-<a class="social-icon" href="https://perilastronaut.com/drgbi6nk3?key=b9a8423ba82179e793ae4a5b1096f541"><i class="fab fa-instagram"></i></a>
-<a class="social-icon" href="https://perilastronaut.com/drgbi6nk3?key=b9a8423ba82179e793ae4a5b1096f541"><i class="fab fa-youtube"></i></a>
-<a class="social-icon" href="https://perilastronaut.com/drgbi6nk3?key=b9a8423ba82179e793ae4a5b1096f541"><i class="fab fa-facebook"></i></a>
-<a class="social-icon" href="https://perilastronaut.com/drgbi6nk3?key=b9a8423ba82179e793ae4a5b1096f541"><i class="fab fa-twitter"></i></a>
-</div>
-</nav>
-<p class="copyright">Dashflix. All rights reserved.</p>
-</footer>
-<script>
-document.querySelectorAll('.faq-question').forEach(button => {
-  button.addEventListener('click', () => {
-    const item = button.parentElement;
-    item.classList.toggle('active');
-  });
-});
-</script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="search.js"></script>
-<script src="trending.js"></script>
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-<script type='text/javascript' src='//perilastronaut.com/cd/15/a9/cd15a9b77aba599c8d4990b58429224f.js'></script>
+  <main id="main-content"></main>
+  <script src="index.js"></script>
 </body>
 </html>
