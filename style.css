@@ -576,16 +576,3 @@ body.light ::-webkit-scrollbar-thumb { background: #d0d0df; }
   margin-right: 0.7em;
   font-weight: 500;
 }
-
-.logout-icon {
-  color: var(--icon);
-  transition: color 0.2s;
-}
-.logout-btn:hover .logout-icon,
-.logout-btn:focus .logout-icon {
-  color: var(--accent);
-}
-body.light .logout-btn:hover .logout-icon,
-body.light .logout-btn:focus .logout-icon {
-  color: #b0292c;
-}

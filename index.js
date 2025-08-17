@@ -1,7 +1,6 @@
 const MAIN = document.getElementById('main-content');
 const SEARCH = document.getElementById('search');
 const TMDB_API_KEY = '4f599baa15d072c9de346b2816a131b8';
-
 const COLLECTIONS = [
   { key: 'movies', name: 'Movies', icon: '<i class="fas fa-film"></i>' },
   { key: 'tv',     name: 'TV',     icon: '<i class="fas fa-tv"></i>' },
@@ -15,15 +14,16 @@ let IS_LOADING = false;
 let SEARCH_QUERY = "";
 let GRID_MODE = "movies";
 
-// --- THEME TOGGLE LOGIC ---
 function setTheme(light) {
   document.body.className = light ? 'light' : '';
   localStorage.setItem('tt_theme', light ? 'light' : 'dark');
 }
+
 function toggleTheme() {
   setTheme(!document.body.classList.contains('light'));
   updateThemeBtn();
 }
+
 function updateThemeBtn() {
   const btn = document.getElementById('theme-toggle-btn');
   if (!btn) return;
@@ -34,6 +34,7 @@ function updateThemeBtn() {
     document.body.classList.contains('light') ? "Switch to dark mode" : "Switch to light mode"
   );
 }
+
 setTheme(localStorage.getItem('tt_theme') === 'light');
 setTimeout(updateThemeBtn, 1);
 document.getElementById('theme-toggle-btn').onclick = toggleTheme;
@@ -67,6 +68,7 @@ function updateSlider() {
     </button>`
   ).join('');
 }
+
 window.setCollection = setCollection;
 
 async function loadNextPage() {
@@ -88,6 +90,7 @@ async function loadNextPage() {
       id: m.id,
       title: m.title,
       year: m.release_date ? m.release_date.slice(0,4) : '',
+      rating: m.vote_average ? m.vote_average.toFixed(1) : 'N/A',
       url: `player.html?type=movie&id=${m.id}`,
       thumb: m.poster_path ? `https://image.tmdb.org/t/p/w500/${m.poster_path}` : '',
     })));
@@ -96,6 +99,7 @@ async function loadNextPage() {
       id: s.id,
       title: s.name,
       year: s.first_air_date ? s.first_air_date.slice(0,4) : '',
+      rating: s.vote_average ? s.vote_average.toFixed(1) : 'N/A',
       url: `player.html?type=tv&id=${s.id}&season=1&episode=1`,
       thumb: s.poster_path ? `https://image.tmdb.org/t/p/w500/${s.poster_path}` : '',
     })));
@@ -105,7 +109,6 @@ async function loadNextPage() {
   PAGE += 1;
 }
 
-// Infinite scroll
 window.onscroll = function() {
   if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 1000)) {
     loadNextPage();
@@ -121,16 +124,18 @@ function renderGrid(list) {
   const html = `<div class="grid">` + filtered.map((v) => `
       <div class="card card-poster" style="position:relative;">
         <div class="thumb thumb-poster-bg">
+          <div class="play-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="48" height="48">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+          <div class="rating">${v.rating}</div>
           ${v.thumb
             ? `<img class="thumb-poster" loading="lazy" src="${v.thumb}" alt="Poster" />`
             : `<div class="thumb-poster thumb-poster-placeholder">${COLLECTIONS[CURRENT_INDEX].icon}</div>`}
           <div class="thumb-cover"
                data-url="${v.url}"
                style="position:absolute;inset:0;z-index:2;cursor:pointer;background:transparent"></div>
-        </div>
-        <div class="card-info">
-          <div class="title" data-url="${v.url}">${escapeHtml(v.title || 'Untitled')}</div>
-          <div class="tags">${v.year ? `<i class="fa fa-calendar"></i> ${v.year}` : ''}</div>
         </div>
       </div>
   `).join('') + `</div>`;
@@ -147,6 +152,31 @@ MAIN.addEventListener('click', function(e) {
   }
 });
 
+MAIN.addEventListener('click', function(e) {
+  if (IS_LOADING) return;
+
+  if (e.target.closest('.play-icon')) {
+    let card = e.target.closest('.card');
+    let url = card?.querySelector('.thumb-cover')?.dataset.url;
+    if (url) {
+      window.location.href = url;
+      e.stopPropagation();
+      e.preventDefault();
+      return;
+    }
+  }
+
+  // Original click handler
+  let url = e.target.closest('.thumb-cover')?.dataset.url;
+  if (!url) url = e.target.closest('.card-info .title')?.dataset.url;
+  if (url) {
+    window.location.href = url;
+    e.stopPropagation();
+    e.preventDefault();
+  }
+});
+
+
 SEARCH.addEventListener('input', function() {
   SEARCH_QUERY = this.value.trim();
   PAGE = 1;
@@ -154,6 +184,7 @@ SEARCH.addEventListener('input', function() {
   MAIN.innerHTML = `<div class="grid">Loading...</div>`;
   loadNextPage();
 });
+
 document.getElementById('search-btn').addEventListener('click', function() {
   SEARCH_QUERY = SEARCH.value.trim();
   PAGE = 1;
@@ -163,7 +194,6 @@ document.getElementById('search-btn').addEventListener('click', function() {
 });
 
 window.onload = function() {
-  // Optionally, auto-restore tab from query param:
   const params = new URLSearchParams(location.search);
   const tab = params.get('tab');
   if (tab === 'tv') setCollection(1, true); else setCollection(0, true);

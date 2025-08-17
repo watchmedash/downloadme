@@ -8,99 +8,48 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    #logout-modal {
-      position: fixed;
-      z-index: 99;
-      left: 0; top: 0; width: 100vw; height: 100vh;
-      display: none;
-      align-items: center;
-      justify-content: center;
-    }
-    #logout-modal.active { display: flex; }
-    #logout-modal .modal-backdrop {
-      position: absolute;
-      left:0; top:0; width:100vw; height:100vh;
-      background: rgba(0,0,0,0.6);
-      z-index:1;
-    }
-    #logout-modal .modal-dialog {
-      position: relative;
-      z-index:2;
-      background: #232327;
-      color: #fff;
-      border-radius: 1.2em;
-      padding: 2em 2.1em 1.5em 2.1em;
-      box-shadow: 0 6px 40px #000b;
-      min-width: 280px;
-      max-width: 90vw;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-    #logout-modal .modal-message i {
-      font-size: 2.2em;
-      color: #ff3437;
-      margin-bottom: 0.6em;
-    }
-    #logout-modal .modal-message p {
-      margin: 0 0 1em 0;
-      font-size: 1.13em;
-    }
-    #logout-modal .modal-actions {
-      display: flex;
-      gap: 1.3em;
-    }
-    #logout-modal .modal-actions button {
-      padding: 0.6em 1.3em;
-      border-radius: 2em;
-      border: none;
-      font-size: 1.05em;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background .15s;
-    }
-    #logout-modal #logout-cancel {
-      background: #333;
-      color: #fff;
-    }
-    #logout-modal #logout-cancel:hover {
-      background: #222;
-    }
-    #logout-modal #logout-confirm {
-      background: #ff3437;
-      color: #fff;
-    }
-    #logout-modal #logout-confirm:hover {
-      background: #b0292c;
-    }
+.thumb {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.7);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 10;
+  background: rgba(0,0,0,0.6);
+  border-radius: 50%;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card:hover .play-icon {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+}
+.rating {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(0,0,0,0.9);
+  color: var(--accent, #ff3437);
+  padding: 4px 9px;
+  font-weight: 700;
+  font-size: 0.98em;
+  border-radius: 6px;
+  z-index: 11;
+}
+</style>
 
-    /* Logout Icon Styling */
-    .logout-btn {
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 1.45em;
-      cursor: pointer;
-      margin-left: 1em;
-      transition: color 0.2s;
-    }
-    .logout-btn:hover,
-    .logout-btn:focus {
-      color: #ff3437;
-    }
-    /* Make sure the theme toggle & logout button play nice on mobile! */
-    @media (max-width: 600px) {
-      .header-controls {
-        flex-wrap: wrap;
-        gap: 0.7em;
-      }
-      .logout-btn {
-        font-size: 1.18em;
-        margin-left: 0.5em;
-      }
-    }
-  </style>
 </head>
 <body>
   <header>
@@ -110,7 +59,7 @@
         <div class="slider-toggle" id="slider-toggle"></div>
       </div>
       <div class="search-group">
-        <input id="search" type="text" placeholder="Search videos..."/>
+        <input id="search" type="text" placeholder="Search..."/>
         <button id="search-btn"><i class="fas fa-search"></i></button>
       </div>
       <button class="theme-toggle" id="theme-toggle-btn" type="button"></button>
