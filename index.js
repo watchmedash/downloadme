@@ -5,7 +5,6 @@ const COLLECTIONS = [
   { key: 'movies', name: 'Movies', icon: '<i class="fas fa-film"></i>' },
   { key: 'tv',     name: 'TV',     icon: '<i class="fas fa-tv"></i>' },
 ];
-
 let CURRENT_INDEX = 0;
 let ITEMS = [];
 let PAGE = 1;
@@ -13,17 +12,16 @@ let TOTAL_PAGES = 100;
 let IS_LOADING = false;
 let SEARCH_QUERY = "";
 let GRID_MODE = "movies";
+const WATCHLIST_KEY = 'tt_watchlist';
 
 function setTheme(light) {
   document.body.className = light ? 'light' : '';
   localStorage.setItem('tt_theme', light ? 'light' : 'dark');
 }
-
 function toggleTheme() {
   setTheme(!document.body.classList.contains('light'));
   updateThemeBtn();
 }
-
 function updateThemeBtn() {
   const btn = document.getElementById('theme-toggle-btn');
   if (!btn) return;
@@ -34,17 +32,120 @@ function updateThemeBtn() {
     document.body.classList.contains('light') ? "Switch to dark mode" : "Switch to light mode"
   );
 }
-
 setTheme(localStorage.getItem('tt_theme') === 'light');
 setTimeout(updateThemeBtn, 1);
 document.getElementById('theme-toggle-btn').onclick = toggleTheme;
-
 function escapeHtml(str) {
   return str ? str.replace(/[&<>"']/g, m => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
   })[m]) : '';
 }
-
+function getWatchlist() {
+  let list = localStorage.getItem(WATCHLIST_KEY);
+  return list ? JSON.parse(list) : { movies: [], tv: [] };
+}
+function saveWatchlist(list) {
+  localStorage.setItem(WATCHLIST_KEY, JSON.stringify(list));
+}
+function isInWatchlist(type, id) {
+  const list = getWatchlist();
+  return list[type] && list[type].some(item => item.id == id);
+}
+function addToWatchlist(type, item) {
+  const list = getWatchlist();
+  if (!list[type]) list[type] = [];
+  if (!list[type].some(i => i.id == item.id)) {
+    list[type].push({id: item.id, title: item.title, thumb: item.thumb, year: item.year});
+    saveWatchlist(list);
+    return true;
+  }
+  return false;
+}
+function removeFromWatchlist(type, id) {
+  const list = getWatchlist();
+  if (list[type]) {
+    list[type] = list[type].filter(i => i.id != id);
+    saveWatchlist(list);
+    return true;
+  }
+  return false;
+}
+function showWatchlistMenu(e, type, item) {
+  e.preventDefault();
+  const oldMenu = document.getElementById('watchlist-context-menu');
+  if (oldMenu) oldMenu.remove();
+  const exists = isInWatchlist(type, item.id);
+  const menu = document.createElement('div');
+  menu.id = 'watchlist-context-menu';
+  menu.style.position = 'fixed';
+  menu.style.top = e.clientY + 'px';
+  menu.style.left = e.clientX + 'px';
+  menu.style.background = 'var(--card-bg)';
+  menu.style.color = 'var(--text)';
+  menu.style.border = '2px solid var(--accent)';
+  menu.style.borderRadius = '8px';
+  menu.style.padding = '0.7em 1.2em';
+  menu.style.cursor = 'pointer';
+  menu.style.zIndex = '1000';
+  menu.style.boxShadow = '0 4px 16px rgba(0,0,0,0.1)';
+  menu.style.fontWeight = '500';
+  menu.style.userSelect = 'none';
+  menu.textContent = exists ? 'Remove from watchlist' : 'Add to watchlist';
+  menu.onclick = function () {
+    if (exists) {
+      removeFromWatchlist(type, item.id);
+      showNotification('Removed from watchlist', 'success');
+    } else {
+      addToWatchlist(type, item);
+      showNotification('Added to watchlist', 'success');
+    }
+    menu.remove();
+  };
+  document.body.appendChild(menu);
+  const rect = menu.getBoundingClientRect();
+  if (rect.right > window.innerWidth) {
+    menu.style.left = (e.clientX - rect.width) + 'px';
+  }
+  if (rect.bottom > window.innerHeight) {
+    menu.style.top = (e.clientY - rect.height) + 'px';
+  }
+}
+document.addEventListener('click', function () {
+  const menu = document.getElementById('watchlist-context-menu');
+  if (menu) menu.remove();
+});
+function showNotification(message, type) {
+  const notification = document.createElement('div');
+  notification.style.position = 'fixed';
+  notification.style.top = '20px';
+  notification.style.right = '20px';
+  notification.style.background = type === 'success' ? '#4CAF50' : 'var(--accent)';
+  notification.style.color = 'white';
+  notification.style.padding = '1em 1.5em';
+  notification.style.borderRadius = '8px';
+  notification.style.zIndex = '1002';
+  notification.style.boxShadow = '0 4px 16px rgba(0,0,0,0.3)';
+  notification.style.fontWeight = '500';
+  notification.style.animation = 'slideIn 0.3s ease';
+  notification.textContent = message;
+  document.body.appendChild(notification);
+  setTimeout(function () {
+    notification.style.animation = 'slideOut 0.3s ease';
+    setTimeout(function () { notification.remove(); }, 300);
+  }, 2000);
+}
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+  @keyframes slideOut {
+    from { transform: translateX(0); opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+  }
+`;
+document.head.appendChild(style);
 function setCollection(idx, noPush) {
   CURRENT_INDEX = idx;
   PAGE = 1;
@@ -58,7 +159,6 @@ function setCollection(idx, noPush) {
   loadNextPage(true);
   if (!noPush) history.replaceState({}, '', `index.html?tab=${COLLECTIONS[CURRENT_INDEX].key}`);
 }
-
 function updateSlider() {
   const slider = document.getElementById('slider-toggle');
   slider.innerHTML = COLLECTIONS.map((c, i) =>
@@ -68,9 +168,7 @@ function updateSlider() {
     </button>`
   ).join('');
 }
-
 window.setCollection = setCollection;
-
 async function loadNextPage() {
   if (IS_LOADING || (PAGE > TOTAL_PAGES)) return;
   IS_LOADING = true;
@@ -108,13 +206,11 @@ async function loadNextPage() {
   IS_LOADING = false;
   PAGE += 1;
 }
-
 window.onscroll = function() {
   if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 1000)) {
     loadNextPage();
   }
 };
-
 function renderGrid(list) {
   let filtered = list;
   const q = (SEARCH.value || "").trim().toLowerCase();
@@ -141,7 +237,6 @@ function renderGrid(list) {
   `).join('') + `</div>`;
   MAIN.innerHTML = html || "<div>No items found.</div>";
 }
-
 MAIN.addEventListener('click', function(e) {
   if (IS_LOADING) return;
   let url = e.target.closest('.thumb-cover')?.dataset.url;
@@ -151,10 +246,8 @@ MAIN.addEventListener('click', function(e) {
     e.stopPropagation(); e.preventDefault();
   }
 });
-
 MAIN.addEventListener('click', function(e) {
   if (IS_LOADING) return;
-
   if (e.target.closest('.play-icon')) {
     let card = e.target.closest('.card');
     let url = card?.querySelector('.thumb-cover')?.dataset.url;
@@ -165,8 +258,6 @@ MAIN.addEventListener('click', function(e) {
       return;
     }
   }
-
-  // Original click handler
   let url = e.target.closest('.thumb-cover')?.dataset.url;
   if (!url) url = e.target.closest('.card-info .title')?.dataset.url;
   if (url) {
@@ -175,8 +266,22 @@ MAIN.addEventListener('click', function(e) {
     e.preventDefault();
   }
 });
-
-
+MAIN.addEventListener('contextmenu', function(e) {
+  const card = e.target.closest('.card.card-poster');
+  if (!card) return;
+  const poster = card.querySelector('.thumb-cover');
+  if (!poster) return;
+  let url = poster.dataset.url;
+  if (!url) return;
+  const idMatch = url.match(/id=([0-9]+)/);
+  let id = idMatch ? parseInt(idMatch[1]) : null;
+  if (!id) return;
+  const idx = ITEMS.findIndex(v => parseInt(v.id) === id);
+  if (idx < 0) return;
+  let item = ITEMS[idx];
+  let type = GRID_MODE;
+  showWatchlistMenu(e, type, item);
+});
 SEARCH.addEventListener('input', function() {
   SEARCH_QUERY = this.value.trim();
   PAGE = 1;
@@ -184,7 +289,6 @@ SEARCH.addEventListener('input', function() {
   MAIN.innerHTML = `<div class="grid">Loading...</div>`;
   loadNextPage();
 });
-
 document.getElementById('search-btn').addEventListener('click', function() {
   SEARCH_QUERY = SEARCH.value.trim();
   PAGE = 1;
@@ -192,7 +296,6 @@ document.getElementById('search-btn').addEventListener('click', function() {
   MAIN.innerHTML = `<div class="grid">Loading...</div>`;
   loadNextPage();
 });
-
 window.onload = function() {
   const params = new URLSearchParams(location.search);
   const tab = params.get('tab');

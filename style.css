@@ -576,3 +576,39 @@ body.light ::-webkit-scrollbar-thumb { background: #d0d0df; }
   margin-right: 0.7em;
   font-weight: 500;
 }
+
+/* Watchlist specific styles */
+.remove-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: rgba(255, 52, 55, 0.9);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s, background 0.2s;
+    z-index: 2;
+}
+
+.card:hover .remove-btn {
+    opacity: 1;
+}
+
+.remove-btn:hover {
+    background: rgba(255, 52, 55, 1);
+    transform: scale(1.1);
+}
+
+/* Context menu improvements */
+#watchlist-context-menu:hover {
+    background: var(--accent);
+    color: white;
+}
