@@ -70,13 +70,8 @@ if (TYPE === 'movie') {
     const relatedMovies = (similarJson.results || []).slice(0, 7);
 
     const servers = [
-      {name: 'Server 1',  url: `https://vidjoy.pro/embed/movie/${TMDBID}`},
-      {name: 'Server 2',  url: `https://vidrock.net/movie/${TMDBID}`},
-      {name: 'Server 3',  url: `https://vidsrc.vip/embed/movie/${TMDBID}`},
-      {name: 'Server 4',  url: `https://www.2embed.cc/embed/${TMDBID}`},
-      {name: 'Server 5',  url: `https://player.vidpro.top/embed/movie/${TMDBID}`},
-      {name: 'Server 6',  url: `https://player.videasy.net/movie/${TMDBID}`},
-      {name: 'Server 7',  url: `https://player.autoembed.cc/embed/movie/${TMDBID}`},
+      {name: 'Server 1',  url: `https://www.2embed.cc/embed/${TMDBID}`},
+      {name: 'Server 2',  url: `https://player.vidpro.top/embed/movie/${TMDBID}`},
     ];
 
     function renderMoviePlayer(selectedIdx = 0) {
@@ -217,7 +212,7 @@ else if (TYPE === 'tv') {
           <div class="player-box">
             <iframe width="100%"
               height="100%"
-              src="https://vidjoy.pro/embed/tv/${TMDBID}/${season}/${episode}"
+              src="https://www.2embed.cc/embedtv/${TMDBID}&s=${season}&e=${episode}"
               frameborder="0"
               allowfullscreen
               sandbox="allow-scripts allow-same-origin allow-presentation allow-forms"
