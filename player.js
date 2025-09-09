@@ -78,9 +78,6 @@ if (TYPE === 'movie') {
       MAIN.innerHTML = `
         <div class="player-layout">
           <div class="player-main">
-            <button class="player-back-btn" onclick="goHome()">
-              <i class="fas fa-arrow-left"></i> Back
-            </button>
             <div class="player-controls-row" style="margin-bottom:1em">
               <div class="dropdowns">
                 <label for="server-dd">Server:</label>
@@ -101,6 +98,9 @@ if (TYPE === 'movie') {
                 sandbox="allow-scripts allow-same-origin allow-presentation allow-forms"
                 referrerpolicy="no-referrer"></iframe>
             </div>
+            <button class="player-back-btn" onclick="goHome()">
+              <i class="fas fa-arrow-left"></i> Back
+            </button>
             <div class="player-title">${escapeHtml(m.title)}</div>
             <div class="player-tags">${(m.genres||[]).map(g=>`<i class="fa fa-hashtag"></i> ${escapeHtml(g.name)}`).join(' ')} ${m.release_date ? '('+m.release_date.slice(0,4)+')' : '' }</div>
             <div class="details-section">
@@ -184,9 +184,6 @@ else if (TYPE === 'tv') {
     MAIN.innerHTML = `
       <div class="player-layout">
         <div class="player-main">
-          <button class="player-back-btn" onclick="goHome()">
-            <i class="fas fa-arrow-left"></i> Back
-          </button>
           <div class="player-controls-row">
             <div class="dropdowns">
               <label for="season-dd">Season:</label>
@@ -218,6 +215,9 @@ else if (TYPE === 'tv') {
               sandbox="allow-scripts allow-same-origin allow-presentation allow-forms"
               referrerpolicy="no-referrer"></iframe>
           </div>
+          <button class="player-back-btn" onclick="goHome()">
+            <i class="fas fa-arrow-left"></i> Back
+          </button>
           <div class="player-title" style="margin-top:1.3em">${escapeHtml(globalShowObj.name)}</div>
           <div class="player-tags">${(globalShowObj.genres||[]).map(t => `<i class="fa fa-hashtag"></i> ${escapeHtml(t.name)}`).join(' ')} (${globalShowObj.first_air_date ? globalShowObj.first_air_date.slice(0,4) : ''})</div>
           <div class="details-section">
