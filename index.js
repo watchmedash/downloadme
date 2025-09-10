@@ -18,10 +18,12 @@ function setTheme(light) {
   document.body.className = light ? 'light' : '';
   localStorage.setItem('tt_theme', light ? 'light' : 'dark');
 }
+
 function toggleTheme() {
   setTheme(!document.body.classList.contains('light'));
   updateThemeBtn();
 }
+
 function updateThemeBtn() {
   const btn = document.getElementById('theme-toggle-btn');
   if (!btn) return;
@@ -32,25 +34,35 @@ function updateThemeBtn() {
     document.body.classList.contains('light') ? "Switch to dark mode" : "Switch to light mode"
   );
 }
+
 setTheme(localStorage.getItem('tt_theme') === 'light');
 setTimeout(updateThemeBtn, 1);
 document.getElementById('theme-toggle-btn').onclick = toggleTheme;
+
 function escapeHtml(str) {
   return str ? str.replace(/[&<>"']/g, m => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
   })[m]) : '';
 }
+
 function getWatchlist() {
   let list = localStorage.getItem(WATCHLIST_KEY);
   return list ? JSON.parse(list) : { movies: [], tv: [] };
 }
+
 function saveWatchlist(list) {
   localStorage.setItem(WATCHLIST_KEY, JSON.stringify(list));
 }
+
 function isInWatchlist(type, id) {
   const list = getWatchlist();
   return list[type] && list[type].some(item => item.id == id);
 }
+
 function addToWatchlist(type, item) {
   const list = getWatchlist();
   if (!list[type]) list[type] = [];
@@ -61,6 +73,7 @@ function addToWatchlist(type, item) {
   }
   return false;
 }
+
 function removeFromWatchlist(type, id) {
   const list = getWatchlist();
   if (list[type]) {
@@ -70,6 +83,7 @@ function removeFromWatchlist(type, id) {
   }
   return false;
 }
+
 function showWatchlistMenu(e, type, item) {
   e.preventDefault();
   const oldMenu = document.getElementById('watchlist-context-menu');
@@ -110,10 +124,12 @@ function showWatchlistMenu(e, type, item) {
     menu.style.top = (e.clientY - rect.height) + 'px';
   }
 }
+
 document.addEventListener('click', function () {
   const menu = document.getElementById('watchlist-context-menu');
   if (menu) menu.remove();
 });
+
 function showNotification(message, type) {
   const notification = document.createElement('div');
   notification.style.position = 'fixed';
@@ -134,6 +150,7 @@ function showNotification(message, type) {
     setTimeout(function () { notification.remove(); }, 300);
   }, 2000);
 }
+
 const style = document.createElement('style');
 style.textContent = `
   @keyframes slideIn {
@@ -146,6 +163,30 @@ style.textContent = `
   }
 `;
 document.head.appendChild(style);
+
+// NEW LOADING INDICATOR FUNCTIONS
+function showLoadingIndicator() {
+  const existing = document.getElementById('loading-indicator');
+  if (existing) return;
+
+  const loader = document.createElement('div');
+  loader.id = 'loading-indicator';
+  loader.innerHTML = `
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Loading more ${GRID_MODE}...</div>
+  `;
+
+  const grid = document.querySelector('.grid');
+  if (grid) {
+    grid.appendChild(loader);
+  }
+}
+
+function hideLoadingIndicator() {
+  const loader = document.getElementById('loading-indicator');
+  if (loader) loader.remove();
+}
+
 function setCollection(idx, noPush) {
   CURRENT_INDEX = idx;
   PAGE = 1;
@@ -159,6 +200,7 @@ function setCollection(idx, noPush) {
   loadNextPage(true);
   if (!noPush) history.replaceState({}, '', `index.html?tab=${COLLECTIONS[CURRENT_INDEX].key}`);
 }
+
 function updateSlider() {
   const slider = document.getElementById('slider-toggle');
   slider.innerHTML = COLLECTIONS.map((c, i) =>
@@ -168,10 +210,16 @@ function updateSlider() {
     </button>`
   ).join('');
 }
+
 window.setCollection = setCollection;
+
 async function loadNextPage() {
   if (IS_LOADING || (PAGE > TOTAL_PAGES)) return;
   IS_LOADING = true;
+
+  // Show loading spinner
+  showLoadingIndicator();
+
   let url = "";
   let isMovie = (COLLECTIONS[CURRENT_INDEX].key === 'movies');
   if (SEARCH_QUERY) {
@@ -179,38 +227,51 @@ async function loadNextPage() {
   } else {
     url = `https://api.themoviedb.org/3/${isMovie ? "movie/popular" : "tv/popular"}?api_key=${TMDB_API_KEY}&language=en-US&page=${PAGE}`;
   }
-  const res = await fetch(url);
-  if (!res.ok) return;
-  const data = await res.json();
-  TOTAL_PAGES = data.total_pages || 100;
-  if (isMovie) {
-    ITEMS.push(...(data.results || []).map(m => ({
-      id: m.id,
-      title: m.title,
-      year: m.release_date ? m.release_date.slice(0,4) : '',
-      rating: m.vote_average ? m.vote_average.toFixed(1) : 'N/A',
-      url: `player.html?type=movie&id=${m.id}`,
-      thumb: m.poster_path ? `https://image.tmdb.org/t/p/w500/${m.poster_path}` : '',
-    })));
-  } else {
-    ITEMS.push(...(data.results || []).map(s => ({
-      id: s.id,
-      title: s.name,
-      year: s.first_air_date ? s.first_air_date.slice(0,4) : '',
-      rating: s.vote_average ? s.vote_average.toFixed(1) : 'N/A',
-      url: `player.html?type=tv&id=${s.id}&season=1&episode=1`,
-      thumb: s.poster_path ? `https://image.tmdb.org/t/p/w500/${s.poster_path}` : '',
-    })));
+
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+    const data = await res.json();
+    TOTAL_PAGES = data.total_pages || 100;
+
+    if (isMovie) {
+      ITEMS.push(...(data.results || []).map(m => ({
+        id: m.id,
+        title: m.title,
+        year: m.release_date ? m.release_date.slice(0,4) : '',
+        rating: m.vote_average ? m.vote_average.toFixed(1) : 'N/A',
+        url: `player.html?type=movie&id=${m.id}`,
+        thumb: m.poster_path ? `https://image.tmdb.org/t/p/w500/${m.poster_path}` : '',
+      })));
+    } else {
+      ITEMS.push(...(data.results || []).map(s => ({
+        id: s.id,
+        title: s.name,
+        year: s.first_air_date ? s.first_air_date.slice(0,4) : '',
+        rating: s.vote_average ? s.vote_average.toFixed(1) : 'N/A',
+        url: `player.html?type=tv&id=${s.id}&season=1&episode=1`,
+        thumb: s.poster_path ? `https://image.tmdb.org/t/p/w500/${s.poster_path}` : '',
+      })));
+    }
+
+    renderGrid(ITEMS);
+    PAGE += 1;
+  } catch (error) {
+    console.error('Error loading:', error);
+    showNotification('Failed to load content', 'error');
+  } finally {
+    hideLoadingIndicator();
+    IS_LOADING = false;
   }
-  renderGrid(ITEMS);
-  IS_LOADING = false;
-  PAGE += 1;
 }
+
 window.onscroll = function() {
   if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 1000)) {
     loadNextPage();
   }
 };
+
 function renderGrid(list) {
   let filtered = list;
   const q = (SEARCH.value || "").trim().toLowerCase();
@@ -227,7 +288,7 @@ function renderGrid(list) {
           </div>
           <div class="rating">${v.rating}</div>
           ${v.thumb
-            ? `<img class="thumb-poster" loading="lazy" src="${v.thumb}" alt="Poster" />`
+            ? `<img class="thumb-poster" loading="lazy" src="${v.thumb}" alt="Poster" onload="this.style.opacity=1" style="opacity:0; transition: opacity 0.3s;" />`
             : `<div class="thumb-poster thumb-poster-placeholder">${COLLECTIONS[CURRENT_INDEX].icon}</div>`}
           <div class="thumb-cover"
                data-url="${v.url}"
@@ -237,6 +298,7 @@ function renderGrid(list) {
   `).join('') + `</div>`;
   MAIN.innerHTML = html || "<div>No items found.</div>";
 }
+
 MAIN.addEventListener('click', function(e) {
   if (IS_LOADING) return;
   let url = e.target.closest('.thumb-cover')?.dataset.url;
@@ -246,6 +308,7 @@ MAIN.addEventListener('click', function(e) {
     e.stopPropagation(); e.preventDefault();
   }
 });
+
 MAIN.addEventListener('click', function(e) {
   if (IS_LOADING) return;
   if (e.target.closest('.play-icon')) {
@@ -266,6 +329,7 @@ MAIN.addEventListener('click', function(e) {
     e.preventDefault();
   }
 });
+
 MAIN.addEventListener('contextmenu', function(e) {
   const card = e.target.closest('.card.card-poster');
   if (!card) return;
@@ -282,6 +346,7 @@ MAIN.addEventListener('contextmenu', function(e) {
   let type = GRID_MODE;
   showWatchlistMenu(e, type, item);
 });
+
 SEARCH.addEventListener('input', function() {
   SEARCH_QUERY = this.value.trim();
   PAGE = 1;
@@ -289,6 +354,7 @@ SEARCH.addEventListener('input', function() {
   MAIN.innerHTML = `<div class="grid">Loading...</div>`;
   loadNextPage();
 });
+
 document.getElementById('search-btn').addEventListener('click', function() {
   SEARCH_QUERY = SEARCH.value.trim();
   PAGE = 1;
@@ -296,6 +362,7 @@ document.getElementById('search-btn').addEventListener('click', function() {
   MAIN.innerHTML = `<div class="grid">Loading...</div>`;
   loadNextPage();
 });
+
 window.onload = function() {
   const params = new URLSearchParams(location.search);
   const tab = params.get('tab');
