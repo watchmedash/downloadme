@@ -70,10 +70,9 @@ if (TYPE === 'movie') {
     const relatedMovies = (similarJson.results || []).slice(0, 7);
 
     const servers = [
-      {name: 'Server 1',  url: `https://www.2embed.cc/embed/${TMDBID}`},
-      {name: 'Server 2',  url: `https://player.vidpro.top/embed/movie/${TMDBID}`},
+      {name: 'Server 1',  url: `https://player.vidsrc.co/embed/movie/${TMDBID}`},
+      {name: 'Server 2',  url: `https://www.2embed.cc/embed/${TMDBID}`},
       {name: 'Server 3',  url: `https://vidsrc.me/embed/movie/${TMDBID}`},
-      {name: 'Server 4',  url: `https://vidjoy.pro/embed/movie/${TMDBID}`},
       {name: 'Server 5',  url: `https://moviesapi.to/movie/${TMDBID}`},
       {name: 'Server 6',  url: `https://vidsrc.vip/embed/movie/${TMDBID}`},
       {name: 'Server 7',  url: `https://multiembed.mov/directstream.php?video_id=${TMDBID}&tmdb=1`},
@@ -82,9 +81,6 @@ if (TYPE === 'movie') {
       {name: 'Server 10',  url: `https://vidfast.pro/movie/${TMDBID}?autoPlay=true`},
       {name: 'Server 11',  url: `https://player.vidzee.wtf/embed/movie/${TMDBID}?server=1`},
       {name: 'Server 12',  url: `https://vidsrc.rip/embed/movie/${TMDBID}`},
-      {name: 'Server 13',  url: `https://player.autoembed.cc/embed/movie/${TMDBID}`},
-      {name: 'Server 14',  url: `https://iframe.pstream.org/embed/tmdb-movie-${TMDBID}`},
-      {name: 'Server 15',  url: `https://player.vidsrc.co/embed/movie/${TMDBID}`},
     ];
 
     function renderMoviePlayer(selectedIdx = 0) {
@@ -222,7 +218,7 @@ else if (TYPE === 'tv') {
           <div class="player-box">
             <iframe width="100%"
               height="100%"
-              src="https://www.2embed.cc/embedtv/${TMDBID}&s=${season}&e=${episode}"
+              src="https://player.vidplus.to/embed/tv/${TMDBID}/${season}/${episode}"
               frameborder="0"
               allowfullscreen
               sandbox="allow-scripts allow-same-origin allow-presentation allow-forms"
