@@ -1,370 +1,161 @@
-const MAIN = document.getElementById('main-content');
-const SEARCH = document.getElementById('search');
-const TMDB_API_KEY = '4f599baa15d072c9de346b2816a131b8';
-const COLLECTIONS = [
-  { key: 'movies', name: 'Movies', icon: '<i class="fas fa-film"></i>' },
-  { key: 'tv',     name: 'TV',     icon: '<i class="fas fa-tv"></i>' },
-];
-let CURRENT_INDEX = 0;
-let ITEMS = [];
-let PAGE = 1;
-let TOTAL_PAGES = 100;
-let IS_LOADING = false;
-let SEARCH_QUERY = "";
-let GRID_MODE = "movies";
-const WATCHLIST_KEY = 'tt_watchlist';
-
-function setTheme(light) {
-  document.body.className = light ? 'light' : '';
-  localStorage.setItem('tt_theme', light ? 'light' : 'dark');
-}
-
-function toggleTheme() {
-  setTheme(!document.body.classList.contains('light'));
-  updateThemeBtn();
-}
-
-function updateThemeBtn() {
-  const btn = document.getElementById('theme-toggle-btn');
-  if (!btn) return;
-  btn.innerHTML = document.body.classList.contains('light')
-    ? '<i class="fas fa-moon"></i>'
-    : '<i class="fas fa-sun"></i>';
-  btn.setAttribute('aria-label',
-    document.body.classList.contains('light') ? "Switch to dark mode" : "Switch to light mode"
-  );
-}
-
-setTheme(localStorage.getItem('tt_theme') === 'light');
-setTimeout(updateThemeBtn, 1);
-document.getElementById('theme-toggle-btn').onclick = toggleTheme;
-
-function escapeHtml(str) {
-  return str ? str.replace(/[&<>"']/g, m => ({
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '"': '&quot;',
-    "'": '&#39;'
-  })[m]) : '';
-}
-
-function getWatchlist() {
-  let list = localStorage.getItem(WATCHLIST_KEY);
-  return list ? JSON.parse(list) : { movies: [], tv: [] };
-}
-
-function saveWatchlist(list) {
-  localStorage.setItem(WATCHLIST_KEY, JSON.stringify(list));
-}
-
-function isInWatchlist(type, id) {
-  const list = getWatchlist();
-  return list[type] && list[type].some(item => item.id == id);
-}
-
-function addToWatchlist(type, item) {
-  const list = getWatchlist();
-  if (!list[type]) list[type] = [];
-  if (!list[type].some(i => i.id == item.id)) {
-    list[type].push({id: item.id, title: item.title, thumb: item.thumb, year: item.year});
-    saveWatchlist(list);
-    return true;
-  }
-  return false;
-}
-
-function removeFromWatchlist(type, id) {
-  const list = getWatchlist();
-  if (list[type]) {
-    list[type] = list[type].filter(i => i.id != id);
-    saveWatchlist(list);
-    return true;
-  }
-  return false;
-}
-
-function showWatchlistMenu(e, type, item) {
-  e.preventDefault();
-  const oldMenu = document.getElementById('watchlist-context-menu');
-  if (oldMenu) oldMenu.remove();
-  const exists = isInWatchlist(type, item.id);
-  const menu = document.createElement('div');
-  menu.id = 'watchlist-context-menu';
-  menu.style.position = 'fixed';
-  menu.style.top = e.clientY + 'px';
-  menu.style.left = e.clientX + 'px';
-  menu.style.background = 'var(--card-bg)';
-  menu.style.color = 'var(--text)';
-  menu.style.border = '2px solid var(--accent)';
-  menu.style.borderRadius = '8px';
-  menu.style.padding = '0.7em 1.2em';
-  menu.style.cursor = 'pointer';
-  menu.style.zIndex = '1000';
-  menu.style.boxShadow = '0 4px 16px rgba(0,0,0,0.1)';
-  menu.style.fontWeight = '500';
-  menu.style.userSelect = 'none';
-  menu.textContent = exists ? 'Remove from watchlist' : 'Add to watchlist';
-  menu.onclick = function () {
-    if (exists) {
-      removeFromWatchlist(type, item.id);
-      showNotification('Removed from watchlist', 'success');
-    } else {
-      addToWatchlist(type, item);
-      showNotification('Added to watchlist', 'success');
-    }
-    menu.remove();
-  };
-  document.body.appendChild(menu);
-  const rect = menu.getBoundingClientRect();
-  if (rect.right > window.innerWidth) {
-    menu.style.left = (e.clientX - rect.width) + 'px';
-  }
-  if (rect.bottom > window.innerHeight) {
-    menu.style.top = (e.clientY - rect.height) + 'px';
-  }
-}
-
-document.addEventListener('click', function () {
-  const menu = document.getElementById('watchlist-context-menu');
-  if (menu) menu.remove();
-});
-
-function showNotification(message, type) {
-  const notification = document.createElement('div');
-  notification.style.position = 'fixed';
-  notification.style.top = '20px';
-  notification.style.right = '20px';
-  notification.style.background = type === 'success' ? '#4CAF50' : 'var(--accent)';
-  notification.style.color = 'white';
-  notification.style.padding = '1em 1.5em';
-  notification.style.borderRadius = '8px';
-  notification.style.zIndex = '1002';
-  notification.style.boxShadow = '0 4px 16px rgba(0,0,0,0.3)';
-  notification.style.fontWeight = '500';
-  notification.style.animation = 'slideIn 0.3s ease';
-  notification.textContent = message;
-  document.body.appendChild(notification);
-  setTimeout(function () {
-    notification.style.animation = 'slideOut 0.3s ease';
-    setTimeout(function () { notification.remove(); }, 300);
-  }, 2000);
-}
-
-const style = document.createElement('style');
-style.textContent = `
-  @keyframes slideIn {
-    from { transform: translateX(100%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
-  }
-  @keyframes slideOut {
-    from { transform: translateX(0); opacity: 1; }
-    to { transform: translateX(100%); opacity: 0; }
-  }
-`;
-document.head.appendChild(style);
-
-// NEW LOADING INDICATOR FUNCTIONS
-function showLoadingIndicator() {
-  const existing = document.getElementById('loading-indicator');
-  if (existing) return;
-
-  const loader = document.createElement('div');
-  loader.id = 'loading-indicator';
-  loader.innerHTML = `
-    <div class="loading-spinner"></div>
-    <div class="loading-text">Loading more ${GRID_MODE}...</div>
-  `;
-
-  const grid = document.querySelector('.grid');
-  if (grid) {
-    grid.appendChild(loader);
-  }
-}
-
-function hideLoadingIndicator() {
-  const loader = document.getElementById('loading-indicator');
-  if (loader) loader.remove();
-}
-
-function setCollection(idx, noPush) {
-  CURRENT_INDEX = idx;
-  PAGE = 1;
-  ITEMS = [];
-  SEARCH.value = '';
-  TOTAL_PAGES = 100;
-  GRID_MODE = COLLECTIONS[CURRENT_INDEX].key;
-  SEARCH_QUERY = "";
-  updateSlider();
-  MAIN.innerHTML = `<div class="grid">Loading...</div>`;
-  loadNextPage(true);
-  if (!noPush) history.replaceState({}, '', `index.html?tab=${COLLECTIONS[CURRENT_INDEX].key}`);
-}
-
-function updateSlider() {
-  const slider = document.getElementById('slider-toggle');
-  slider.innerHTML = COLLECTIONS.map((c, i) =>
-    `<button class="slider-option${i === CURRENT_INDEX ? ' active' : ''}"
-      onclick="setCollection(${i})" type="button" aria-pressed="${i === CURRENT_INDEX}">
-      ${c.icon}
-    </button>`
-  ).join('');
-}
-
-window.setCollection = setCollection;
-
-async function loadNextPage() {
-  if (IS_LOADING || (PAGE > TOTAL_PAGES)) return;
-  IS_LOADING = true;
-
-  // Show loading spinner
-  showLoadingIndicator();
-
-  let url = "";
-  let isMovie = (COLLECTIONS[CURRENT_INDEX].key === 'movies');
-  if (SEARCH_QUERY) {
-    url = `https://api.themoviedb.org/3/search/${isMovie ? "movie" : "tv"}?api_key=${TMDB_API_KEY}&language=en-US&query=${encodeURIComponent(SEARCH_QUERY)}&page=${PAGE}`;
-  } else {
-    url = `https://api.themoviedb.org/3/${isMovie ? "movie/popular" : "tv/popular"}?api_key=${TMDB_API_KEY}&language=en-US&page=${PAGE}`;
-  }
-
+// ── TRENDING STRIP ──
+async function loadStrip(type, containerId) {
+  const blocked = type === "movie" ? BLOCKED_MOVIES : BLOCKED_SHOWS;
+  const ep = type === "movie" ? "movie/popular" : "tv/popular";
   try {
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-
+    const res  = await fetch(`${BASE}/${ep}?api_key=${API_KEY}&language=en-US&page=1`);
     const data = await res.json();
-    TOTAL_PAGES = data.total_pages || 100;
+    const list = (data.results || []).filter(x => !blocked.has(x.id)).slice(0, 10);
+    const wrap = document.getElementById(containerId);
+    list.forEach((item, i) => {
+      const title = item.title || item.name;
+      const url   = type === "movie" ? `player.html?id=${item.id}` : `players.html?id=${item.id}`;
+      const card  = document.createElement("div");
+      card.className = "t-card";
+      if (item.poster_path) {
+        const img = document.createElement("img");
+        img.src = IMG + item.poster_path;
+        img.alt = title; img.loading = "lazy";
+        img.onerror = () => {
+          const ph = document.createElement("div");
+          ph.className = "t-ph"; ph.innerHTML = '<i class="fas fa-film"></i>';
+          img.replaceWith(ph);
+        };
+        card.appendChild(img);
+      } else {
+        const ph = document.createElement("div");
+        ph.className = "t-ph"; ph.innerHTML = '<i class="fas fa-film"></i>';
+        card.appendChild(ph);
+      }
+      const num = document.createElement("div");
+      num.className = "t-num"; num.textContent = i + 1;
+      const lbl = document.createElement("div");
+      lbl.className = "t-lbl"; lbl.textContent = title;
+      card.appendChild(num); card.appendChild(lbl);
+      card.addEventListener("click",       () => location.href = url);
+      card.addEventListener("contextmenu", e  => showCtx(e, { ...item, type }));
+      wrap.appendChild(card);
+    });
+  } catch (e) { console.error(e); }
+}
 
-    if (isMovie) {
-      ITEMS.push(...(data.results || []).map(m => ({
-        id: m.id,
-        title: m.title,
-        year: m.release_date ? m.release_date.slice(0,4) : '',
-        rating: m.vote_average ? m.vote_average.toFixed(1) : 'N/A',
-        url: `player.html?type=movie&id=${m.id}`,
-        thumb: m.poster_path ? `https://image.tmdb.org/t/p/w500/${m.poster_path}` : '',
-      })));
+// ── CONTINUE WATCHING ──
+(function() {
+  const items = RW.get();
+  if (!items.length) return;
+  const statsRow = document.querySelector(".stats-row");
+  if (!statsRow) return;
+  const sec = document.createElement("div");
+  sec.innerHTML = `
+    <div class="section-header" style="margin-top:4px;">
+      <h2 class="section-title">Continue <span>Watching</span></h2>
+    </div>
+    <div class="t-strip" id="rwStrip"></div>`;
+  statsRow.insertAdjacentElement("afterend", sec);
+  const strip = document.getElementById("rwStrip");
+  items.forEach(item => {
+    const url  = item.type === "movie" ? `player.html?id=${item.id}` : `players.html?id=${item.id}`;
+    const card = document.createElement("div");
+    card.className = "t-card";
+    if (item.poster_path) {
+      const img = document.createElement("img");
+      img.src = IMG + item.poster_path; img.alt = item.title; img.loading = "lazy";
+      card.appendChild(img);
     } else {
-      ITEMS.push(...(data.results || []).map(s => ({
-        id: s.id,
-        title: s.name,
-        year: s.first_air_date ? s.first_air_date.slice(0,4) : '',
-        rating: s.vote_average ? s.vote_average.toFixed(1) : 'N/A',
-        url: `player.html?type=tv&id=${s.id}&season=1&episode=1`,
-        thumb: s.poster_path ? `https://image.tmdb.org/t/p/w500/${s.poster_path}` : '',
-      })));
+      const ph = document.createElement("div");
+      ph.className = "t-ph"; ph.innerHTML = '<i class="fas fa-film"></i>';
+      card.appendChild(ph);
     }
+    const lbl = document.createElement("div");
+    lbl.className = "t-lbl"; lbl.textContent = item.title;
+    card.appendChild(lbl);
+    card.addEventListener("click", () => location.href = url);
+    strip.appendChild(card);
+  });
+})();
 
-    renderGrid(ITEMS);
-    PAGE += 1;
-  } catch (error) {
-    console.error('Error loading:', error);
-    showNotification('Failed to load content', 'error');
-  } finally {
-    hideLoadingIndicator();
-    IS_LOADING = false;
+loadStrip("movie", "tMovies");
+loadStrip("tv",    "tShows");
+
+// ── GLOBAL SEARCH ──
+const gInput = document.getElementById("gSearch");
+const gDrop  = document.getElementById("gDrop");
+let   gTimer;
+
+gInput.addEventListener("input", () => {
+  clearTimeout(gTimer);
+  const q = gInput.value.trim();
+  if (!q) { gDrop.classList.remove("open"); return; }
+  gTimer = setTimeout(() => doSearch(q), 380);
+});
+document.addEventListener("click", e => {
+  if (!e.target.closest(".hero-search")) gDrop.classList.remove("open");
+});
+
+async function doSearch(q) {
+  gDrop.innerHTML = `<div class="srp-empty"><i class="fas fa-circle-notch fa-spin"></i></div>`;
+  gDrop.classList.add("open");
+  try {
+    const today = new Date().toISOString().slice(0, 10);
+    const [mr, tr] = await Promise.all([
+      fetch(`${BASE}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(q)}&page=1`).then(r => r.json()),
+      fetch(`${BASE}/search/tv?api_key=${API_KEY}&query=${encodeURIComponent(q)}&page=1`).then(r => r.json()),
+    ]);
+    const movies = (mr.results || []).filter(x => !BLOCKED_MOVIES.has(x.id) && x.release_date && x.release_date <= today).slice(0, 5);
+    const shows  = (tr.results || []).filter(x => !BLOCKED_SHOWS.has(x.id)).slice(0, 4);
+    const all    = [...movies.map(x => ({ ...x, type: "movie" })), ...shows.map(x => ({ ...x, type: "tv" }))];
+    if (!all.length) { gDrop.innerHTML = `<div class="srp-empty">No results found</div>`; return; }
+    gDrop.innerHTML = "";
+    all.forEach(item => {
+      const title = item.title || item.name;
+      const year  = (item.release_date || item.first_air_date || "").slice(0, 4);
+      const url   = item.type === "movie" ? `player.html?id=${item.id}` : `players.html?id=${item.id}`;
+      const row   = document.createElement("div");
+      row.className = "srp-item";
+      if (item.poster_path) {
+        const img = document.createElement("img");
+        img.className = "srp-thumb"; img.src = IMG + item.poster_path;
+        img.alt = title; img.loading = "lazy";
+        row.appendChild(img);
+      } else {
+        const ph = document.createElement("div");
+        ph.className = "srp-thumb-ph"; ph.innerHTML = '<i class="fas fa-film"></i>';
+        row.appendChild(ph);
+      }
+      const info = document.createElement("div"); info.className = "srp-info";
+      info.innerHTML = `<h4>${title}</h4><span>${year}</span>`;
+      const badge = document.createElement("span"); badge.className = "srp-badge";
+      badge.textContent = item.type === "movie" ? "Movie" : "Show";
+      row.appendChild(info); row.appendChild(badge);
+      row.addEventListener("click", () => location.href = url);
+      gDrop.appendChild(row);
+    });
+  } catch {
+    gDrop.innerHTML = `<div class="srp-empty">Search failed. Try again.</div>`;
   }
 }
 
-window.onscroll = function() {
-  if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 1000)) {
-    loadNextPage();
-  }
-};
-
-function renderGrid(list) {
-  let filtered = list;
-  const q = (SEARCH.value || "").trim().toLowerCase();
-  if (q) {
-    filtered = list.filter(v => (v.title && v.title.toLowerCase().includes(q)));
-  }
-  const html = `<div class="grid">` + filtered.map((v) => `
-      <div class="card card-poster" style="position:relative;">
-        <div class="thumb thumb-poster-bg">
-          <div class="play-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="48" height="48">
-              <path d="M8 5v14l11-7z"/>
-            </svg>
-          </div>
-          <div class="rating">${v.rating}</div>
-          ${v.thumb
-            ? `<img class="thumb-poster" loading="lazy" src="${v.thumb}" alt="Poster" onload="this.style.opacity=1" style="opacity:0; transition: opacity 0.3s;" />`
-            : `<div class="thumb-poster thumb-poster-placeholder">${COLLECTIONS[CURRENT_INDEX].icon}</div>`}
-          <div class="thumb-cover"
-               data-url="${v.url}"
-               style="position:absolute;inset:0;z-index:2;cursor:pointer;background:transparent"></div>
-        </div>
-      </div>
-  `).join('') + `</div>`;
-  MAIN.innerHTML = html || "<div>No items found.</div>";
-}
-
-MAIN.addEventListener('click', function(e) {
-  if (IS_LOADING) return;
-  let url = e.target.closest('.thumb-cover')?.dataset.url;
-  if (!url) url = e.target.closest('.card-info .title')?.dataset.url;
-  if (url) {
-    window.location.href = url;
-    e.stopPropagation(); e.preventDefault();
-  }
+// ── FAQ ──
+const FAQS = [
+  { q: "Is Dashnews completely free?",          a: "Yes — 100% free. No account, no credit card, no subscription. Just browse and watch." },
+  { q: "Do I need to create an account?",       a: "No registration needed. Find something you like and start watching immediately." },
+  { q: "What video quality is available?",      a: "Dashnews streams in HD where available, depending on the server and your internet speed." },
+  { q: "Why is a movie not playing?",           a: "Try switching to a different server using the server buttons on the player page." },
+  { q: "Can I save movies to watch later?",     a: "Yes — right-click any poster to add it to your Watchlist. It's saved locally in your browser." },
+  { q: "How do I watch TV show episodes?",      a: "Click any TV show poster, then select the season and episode on the player page." },
+  { q: "Why are some movies unavailable?",      a: "Content may be region-restricted or temporarily down. Try switching servers or check back later." },
+  { q: "Does Dashnews work on mobile?",         a: "Absolutely. Dashnews is fully optimised for mobile browsers — no app needed." },
+];
+const fWrap = document.getElementById("faqWrap");
+FAQS.forEach(f => {
+  const item = document.createElement("div");
+  item.className = "faq-item";
+  item.innerHTML = `<button class="faq-q">${f.q}<i class="fas fa-chevron-down"></i></button>
+    <div class="faq-body"><div class="faq-body-inner">${f.a}</div></div>`;
+  item.querySelector(".faq-q").addEventListener("click", () => {
+    const open = item.classList.contains("open");
+    document.querySelectorAll(".faq-item.open").forEach(i => i.classList.remove("open"));
+    if (!open) item.classList.add("open");
+  });
+  fWrap.appendChild(item);
 });
-
-MAIN.addEventListener('click', function(e) {
-  if (IS_LOADING) return;
-  if (e.target.closest('.play-icon')) {
-    let card = e.target.closest('.card');
-    let url = card?.querySelector('.thumb-cover')?.dataset.url;
-    if (url) {
-      window.location.href = url;
-      e.stopPropagation();
-      e.preventDefault();
-      return;
-    }
-  }
-  let url = e.target.closest('.thumb-cover')?.dataset.url;
-  if (!url) url = e.target.closest('.card-info .title')?.dataset.url;
-  if (url) {
-    window.location.href = url;
-    e.stopPropagation();
-    e.preventDefault();
-  }
-});
-
-MAIN.addEventListener('contextmenu', function(e) {
-  const card = e.target.closest('.card.card-poster');
-  if (!card) return;
-  const poster = card.querySelector('.thumb-cover');
-  if (!poster) return;
-  let url = poster.dataset.url;
-  if (!url) return;
-  const idMatch = url.match(/id=([0-9]+)/);
-  let id = idMatch ? parseInt(idMatch[1]) : null;
-  if (!id) return;
-  const idx = ITEMS.findIndex(v => parseInt(v.id) === id);
-  if (idx < 0) return;
-  let item = ITEMS[idx];
-  let type = GRID_MODE;
-  showWatchlistMenu(e, type, item);
-});
-
-SEARCH.addEventListener('input', function() {
-  SEARCH_QUERY = this.value.trim();
-  PAGE = 1;
-  ITEMS = [];
-  MAIN.innerHTML = `<div class="grid">Loading...</div>`;
-  loadNextPage();
-});
-
-document.getElementById('search-btn').addEventListener('click', function() {
-  SEARCH_QUERY = SEARCH.value.trim();
-  PAGE = 1;
-  ITEMS = [];
-  MAIN.innerHTML = `<div class="grid">Loading...</div>`;
-  loadNextPage();
-});
-
-window.onload = function() {
-  const params = new URLSearchParams(location.search);
-  const tab = params.get('tab');
-  if (tab === 'tv') setCollection(1, true); else setCollection(0, true);
-};

@@ -1,43 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Watchlist - N4ked</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-  </style>
-  <script type="text/javascript" data-cfasync="false">
-  /*<![CDATA[/* */
-  (function(){var s=window,d="d151fd85d04cdb0e81d3fad9c6865190",f=[["siteId",636*563*594-207433533],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],k=["d3d3LmJldHRlcmFkc3lzdGVtLmNvbS9kanNubG9nLm1pbi5jc3M=","ZDJrazBvM2ZyN2VkMDEuY2xvdWRmcm9udC5uZXQvV1daa2NOL3llbGV2YXRvci5taW4uanM="],o=-1,g,b,q=function(){clearTimeout(b);o++;if(k[o]&&!(1790904606000<(new Date).getTime()&&1<o)){g=s.document.createElement("script");g.type="text/javascript";g.async=!0;var t=s.document.getElementsByTagName("script")[0];g.src="https://"+atob(k[o]);g.crossOrigin="anonymous";g.onerror=q;g.onload=function(){clearTimeout(b);s[d.slice(0,16)+d.slice(0,16)]||q()};b=setTimeout(q,5E3);t.parentNode.insertBefore(g,t)}};if(!s[d]){try{Object.freeze(s[d]=f)}catch(e){}q()}})();
-  /*]]>/* */
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Watchlist – Dashnews</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="watchlist.css">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5412699736062085"
+ crossorigin="anonymous"></script>
 </head>
 <body>
-  <header>
-    <a href="index.html">
-    <div class="logo"><img src="logo.png" alt="N4ked Logo" class="logo-icon"> N4ked</div>
-    </a>
-    <div class="header-controls">
-      <div class="slider-toggle-container">
-        <div class="slider-toggle" id="watchlist-slider"></div>
+<div class="shell">
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <div class="wl-top">
+      <a href="index.html" class="logo">
+        <span class="logo-text">DASHNEWS</span>
+      </a>
+      <button class="clear-btn" id="clearBtn"><i class="fas fa-trash-alt"></i> Clear All</button>
+    </div>
+
+    <div class="section-header" style="padding-top:2px;">
+      <h2 class="section-title">My <span>Watchlist</span></h2>
+    </div>
+
+    <div class="tab-row">
+      <button class="wl-tab active" data-f="all"><i class="fas fa-th"></i> All</button>
+      <button class="wl-tab" data-f="movie"><i class="fas fa-film"></i> Movies</button>
+      <button class="wl-tab" data-f="tv"><i class="fas fa-tv"></i> Shows</button>
+    </div>
+    <div class="wl-count" id="wlCount"></div>
+
+    <div class="grid" id="grid"></div>
+
+    <div class="empty-state" id="empty" style="display:none;">
+      <i class="fas fa-bookmark"></i>
+      <p>Your watchlist is empty.<br>Right-click any poster to save something.</p>
+      <div class="browse-links">
+        <a href="movies.html" class="browse-link"><i class="fas fa-film"></i> Movies</a>
+        <a href="shows.html"  class="browse-link"><i class="fas fa-tv"></i> Shows</a>
       </div>
     </div>
-    <button class="theme-toggle" id="theme-toggle-btn" type="button" style="position: absolute; top: 1.2rem; right: 1.2rem; z-index: 20;"></button>
-    <button onclick="window.location.href='index.html'" class="theme-toggle" type="button" aria-label="Back" style="position: absolute; top: 1.2rem; right: 3.5rem; z-index: 20;">
-      <i class="fas fa-arrow-left"></i>
-    </button>
-  </header>
-  <main>
-    <h1 style="margin-top:1rem; margin-bottom:2rem; color:var(--text);">My Watchlist</h1>
-    <div class="grid" id="watchlist-grid"></div>
+
   </main>
-  <script src="watchlist.js"></script>
+</div>
+
+<!-- BOTTOM NAV (mobile) -->
+<nav class="bottom-nav">
+  <a href="index.html"     class="nav-item"><i class="fas fa-home"></i>Home</a>
+  <a href="movies.html"    class="nav-item"><i class="fas fa-film"></i>Movies</a>
+  <a href="shows.html"     class="nav-item"><i class="fas fa-tv"></i>Shows</a>
+  <a href="watchlist.html" class="nav-item active"><i class="fas fa-bookmark"></i>Watchlist</a>
+  <button class="nav-item" onclick="toggleTheme()"><i class="fas fa-sun theme-icon"></i>Theme</button>
+</nav>
+
+<script src="app.js"></script>
+<script src="watchlist.js"></script>
 </body>
 </html>
